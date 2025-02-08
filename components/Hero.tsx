@@ -67,7 +67,7 @@ const Hero = ({ addStyle }: { addStyle?: string }) => {
             })}
           </ul>
 
-          {/* Hamburger Icon (Mobile View) */}
+          {/* mobile Navigation */}
           <div className="lg:hidden flex flex-1 justify-end items-center">
             <img
               src={toggle ? "/close.svg" : "/menu.svg"}
@@ -80,7 +80,7 @@ const Hero = ({ addStyle }: { addStyle?: string }) => {
 
             <div
               className={`${
-                !toggle ? "hidden" : "show" //flex
+                !toggle ? "hidden" : "show"
               } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
             >
               <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4 text-white">
