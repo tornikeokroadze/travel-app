@@ -5,21 +5,24 @@ import { usePathname } from "next/navigation";
 
 const Header = () => {
   const [mounted, setMounted] = useState(false);
-  const [isVisible, setIsVisible] = useState(false); // Set initial visibility to true
+  const [isVisible, setIsVisible] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
 
   useEffect(() => {
-    setMounted(true); // Set mounted to true after component is mounted on client
+    setMounted(true);
 
     const handleScroll = () => {
       if (typeof window !== "undefined") {
-        if (window.scrollY > lastScrollY) {
-          setIsVisible(true); // Scrolling down, hide header
+        const scrollY = window.scrollY;
+
+        if (scrollY <= 10) {
+          setIsVisible(false);
         } else {
-          setIsVisible(false); // Scrolling up, show header
+          setIsVisible(true);
         }
-        setLastScrollY(window.scrollY); // Update last scroll position
+
+        setLastScrollY(scrollY);
       }
     };
 
@@ -45,8 +48,13 @@ const Header = () => {
 
   return (
     <div
-      className={`min-h-24 flex justify-around items-center bg-secondary
-       ${isVisible ? "opacity-100" : "opacity-0 -z-10"} transition-opacity duration-300 fixed w-full top-0 left-0 z-50`}
+      className={`min-h-24 justify-around items-center bg-secondary fixed w-full top-0 left-0
+      transition-all duration-700 ease-in-out hidden lg:flex
+      ${
+        isVisible
+          ? "opacity-100 translate-y-0 z-50"
+          : "opacity-0 -translate-y-20 -z-10"
+      }`}
     >
       <Link href="/">
         <img src="/logo.png" alt="logo" width={150} height={50} />
