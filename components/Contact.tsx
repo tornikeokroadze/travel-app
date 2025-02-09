@@ -63,7 +63,7 @@ export default function Contact() {
         <Link href="/contact">
           <button className="relative px-12 py-2 bg-primary-100 font-semibold text-white overflow-hidden group border border-primary-100">
             <span className="absolute inset-0 bg-white transform scale-y-0 group-hover:scale-y-100 origin-bottom transition-all duration-1000"></span>
-            <span className="relative group-hover:text-black transition-colors duration-1000">
+            <span className="relative group-hover:text-black transition-colors duration-300">
               Contact
             </span>
           </button>
