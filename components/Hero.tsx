@@ -35,7 +35,7 @@ const Hero = ({ addStyle }: { addStyle?: string }) => {
       <div className="relative z-10">
         <Contact />
 
-        <div className={`flex justify-around items-center px-16 py-6`}>
+        <div className={`flex justify-around items-center px-28 py-6`}>
           {/* Logo */}
           <Link href="/">
             <img src="/logo.png" alt="logo" width={150} height={50} />

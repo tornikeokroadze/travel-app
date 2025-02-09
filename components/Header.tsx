@@ -48,7 +48,7 @@ const Header = () => {
 
   return (
     <div
-      className={`min-h-24 justify-around items-center bg-secondary fixed w-full top-0 left-0
+      className={`min-h-24 justify-around items-center bg-secondary fixed w-full px-28 top-0 left-0
       transition-all duration-700 ease-in-out hidden lg:flex
       ${
         isVisible

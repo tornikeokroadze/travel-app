@@ -103,7 +103,7 @@ export default function FindTrip() {
           className="relative w-full lg:w-48 min-h-12 lg:min-h-24 px-6 bg-primary-100 font-semibold text-white overflow-hidden rounded-b-lg lg:rounded-r-lg lg:rounded-bl-none group"
         >
           <span className="absolute inset-0 bg-secondary transform scale-y-0 group-hover:scale-y-100 origin-bottom transition-all duration-1000"></span>
-          <span className="relative transition-colors duration-300">
+          <span className="relative transition-colors duration-100">
             Explore
           </span>
         </button>

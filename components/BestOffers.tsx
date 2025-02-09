@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function BestOffers() {
   return (
-    <div className="flex flex-col justify-center items-center px-4 sm:px-0">
+    <div className="flex flex-col justify-center items-center px-4 sm:px-0 mt-20">
       <h2 className="text-2xl sm:text-4xl font-semibold text-center">
         BEST OFFERS
       </h2>
@@ -67,7 +67,7 @@ export default function BestOffers() {
         className="relative mt-6 sm:mt-10 px-6 sm:px-8 py-3 bg-primary-100 text-white overflow-hidden rounded-lg group text-sm sm:text-base"
       >
         <span className="absolute inset-0 bg-secondary transform scale-y-0 group-hover:scale-y-100 origin-bottom transition-all duration-1000"></span>
-        <span className="relative transition-colors duration-300">SEE ALL</span>
+        <span className="relative transition-colors duration-100">SEE ALL</span>
       </Link>
     </div>
   );
