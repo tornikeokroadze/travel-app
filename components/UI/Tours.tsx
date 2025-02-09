@@ -5,14 +5,9 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Settings } from "react-slick";
+import { Settings as SlickSettings } from 'react-slick';
 
-const Slider = dynamic(
-  () => import("react-slick").then((mod) => mod.default as any),
-  {
-    ssr: false,
-  }
-);
+const Slider = dynamic(() => import("react-slick").then(mod => mod.default as React.ComponentType<SlickSettings>), { ssr: false });
 
 const data = [
   {
@@ -48,7 +43,7 @@ const data = [
 ] as const;
 
 export default function Tours() {
-  const settings: Settings = {
+  const settings: SlickSettings = {
     dots: true,
     infinite: true,
     speed: 500,
