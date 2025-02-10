@@ -35,10 +35,9 @@ const Hero = ({ addStyle }: { addStyle?: string }) => {
       <div className="relative z-10">
         <Contact />
 
-        <div className={`flex lg:justify-around items-center px-9 lg:px-28 py-4 fixed bg-secondary lg:relative lg:bg-opacity-0 w-full`}>
-          {/* Logo */}
+        <div className={`flex lg:justify-around items-center px-9 lg:px-28 py-7 fixed bg-secondary lg:relative lg:bg-opacity-0 w-full`}>
           <Link href="/">
-            <img src="/logo.png" alt="logo" className="w-26 h-10 lg:w-40 lg:h-14 left-8" />
+            <img src="/logo.png" alt="logo" className="w-26 h-10 lg:w-40 lg:h-14" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -68,7 +67,7 @@ const Hero = ({ addStyle }: { addStyle?: string }) => {
           </ul>
 
           {/* mobile Navigation */}
-          <div className="lg:hidden flex flex-1 justify-end items-center fixed right-8">
+          <div className="lg:hidden flex flex-1 justify-end items-center">
             <img
               src={toggle ? "/close.svg" : "/menu.svg"}
               alt="menu"

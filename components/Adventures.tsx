@@ -33,12 +33,12 @@ export default function Adventures() {
         }}
       />
 
-      <div className="relative z-10 py-8 flex flex-col justify-center items-center text-center min-h-screen w-full">
+      <div className="relative z-0 py-8 flex flex-col justify-center items-center text-center min-h-screen w-full">
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-10 px-4 sm:px-8">
           ADVENTURES
         </h2>
 
-        <div className="mt-8 sm:mt-20 mb-16 sm:mb-6 px-4 sm:px-8 w-full">
+        <div className="mt-8 sm:mt-20 mb-16 sm:mb-6 px-7 sm:px-8 w-full">
           <Tours haveBorder={false} />
         </div>
 
