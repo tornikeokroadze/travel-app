@@ -1,4 +1,4 @@
-import Link from "next/link";
+import AllButton from "./UI/AllButton";
 
 export default function BestOffers() {
   return (
@@ -11,7 +11,7 @@ export default function BestOffers() {
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="w-full sm:w-1/3 relative group overflow-hidden cursor-pointer">
             <img
-              className="h-64 sm:h-96 w-full object-cover rounded-lg"
+              className="h-64 sm:h-96 w-full object-cover rounded-lg hover:scale-105 transition-all duration-300"
               src="/tours/1.jpg"
               alt=""
             />
@@ -23,7 +23,7 @@ export default function BestOffers() {
           </div>
           <div className="w-full sm:w-2/3 relative group overflow-hidden cursor-pointer">
             <img
-              className="h-64 sm:h-96 w-full object-cover rounded-lg"
+              className="h-64 sm:h-96 w-full object-cover rounded-lg hover:scale-105 transition-all duration-300"
               src="/tours/2.jpg"
               alt=""
             />
@@ -37,7 +37,7 @@ export default function BestOffers() {
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="w-full sm:w-2/3 relative group overflow-hidden cursor-pointer">
             <img
-              className="h-64 sm:h-96 w-full object-cover rounded-lg"
+              className="h-64 sm:h-96 w-full object-cover rounded-lg hover:scale-105 transition-all duration-300"
               src="/tours/3.jpg"
               alt=""
             />
@@ -49,7 +49,7 @@ export default function BestOffers() {
           </div>
           <div className="w-full sm:w-1/3 relative group overflow-hidden cursor-pointer">
             <img
-              className="h-64 sm:h-96 w-full object-cover rounded-lg"
+              className="h-64 sm:h-96 w-full object-cover rounded-lg hover:scale-105 transition-all duration-300"
               src="/tours/4.jpg"
               alt=""
             />
@@ -62,13 +62,9 @@ export default function BestOffers() {
         </div>
       </div>
 
-      <Link
-        href="/"
-        className="relative mt-6 sm:mt-10 px-6 sm:px-8 py-3 bg-primary-100 text-white overflow-hidden rounded-lg group text-sm sm:text-base"
-      >
-        <span className="absolute inset-0 bg-secondary transform scale-y-0 group-hover:scale-y-100 origin-bottom transition-all duration-1000"></span>
-        <span className="relative transition-colors duration-100">SEE ALL</span>
-      </Link>
+      <div className="flex justify-center items-center mt-12 lg:mt-0">
+        <AllButton />
+      </div>
     </div>
   );
 }
