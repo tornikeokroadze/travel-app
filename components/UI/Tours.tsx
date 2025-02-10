@@ -5,9 +5,15 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Settings as SlickSettings } from 'react-slick';
+import { Settings as SlickSettings } from "react-slick";
 
-const Slider = dynamic(() => import("react-slick").then(mod => mod.default as React.ComponentType<SlickSettings>), { ssr: false });
+const Slider = dynamic(
+  () =>
+    import("react-slick").then(
+      (mod) => mod.default as React.ComponentType<SlickSettings>
+    ),
+  { ssr: false }
+);
 
 const data = [
   {
@@ -42,7 +48,7 @@ const data = [
   },
 ] as const;
 
-export default function Tours() {
+export default function Tours({haveBorder}: {haveBorder?: boolean}) {
   const settings: SlickSettings = {
     dots: true,
     infinite: true,
@@ -68,11 +74,11 @@ export default function Tours() {
       <Slider {...settings}>
         {data.map((item) => (
           <div key={item.id} className="px-2">
-            <div className="bg-white border border-gray-200 rounded-lg shadow-sm h-full flex flex-col">
+            <div className={`bg-white ${haveBorder && " border border-gray-200"} rounded-lg shadow-sm h-full flex flex-col`}>
               <Link href="#">
-                <div className="relative w-full" style={{ height: 350 }}>
+                <div className="relative w-full overflow-hidden rounded-t-lg" style={{ height: 350 }}>
                   <Image
-                    className="rounded-t-lg object-cover"
+                    className="rounded-t-lg object-cover hover:scale-105 transition-all duration-500"
                     src={item.image}
                     alt={item.title}
                     layout="fill"
@@ -82,10 +88,11 @@ export default function Tours() {
               </Link>
               <div className="p-8 flex flex-col justify-between flex-grow">
                 <Link href="#">
-                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-center">
+                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-center hover:text-primary transition-all duration-500">
                     {item.title}
                   </h5>
                 </Link>
+
                 <p className="mb-3 font-normal text-gray-700 text-center">
                   {item.description}
                 </p>

@@ -9,7 +9,7 @@ export default function OneDayTours() {
       </h2>
 
       <div className="mt-20 mb-16 sm:mb-6">
-        <Tours />
+        <Tours haveBorder={true} />
       </div>
 
       <div className="flex justify-center items-center">

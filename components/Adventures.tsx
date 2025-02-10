@@ -39,7 +39,7 @@ export default function Adventures() {
         </h2>
 
         <div className="mt-8 sm:mt-20 mb-16 sm:mb-6 px-4 sm:px-8 w-full">
-          <Tours />
+          <Tours haveBorder={false} />
         </div>
 
         <div className="flex justify-center items-center mb-8 w-full">
