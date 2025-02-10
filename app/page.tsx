@@ -1,6 +1,7 @@
 import BestOffers from "@/components/BestOffers";
 import FindTrip from "../components/FindTrip";
 import OneDayTours from "@/components/OneDayTours";
+import Adventures from "@/components/Adventures";
 
 export default function Home() {
   return (
@@ -8,6 +9,8 @@ export default function Home() {
       <FindTrip />
       <BestOffers />
       <OneDayTours />
+      <Adventures />
+      <div className="min-h-96"></div>
     </div>
   );
 }

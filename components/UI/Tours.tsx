@@ -70,7 +70,7 @@ export default function Tours() {
           <div key={item.id} className="px-2">
             <div className="bg-white border border-gray-200 rounded-lg shadow-sm h-full flex flex-col">
               <Link href="#">
-                <div className="relative w-full" style={{ height: 300 }}>
+                <div className="relative w-full" style={{ height: 350 }}>
                   <Image
                     className="rounded-t-lg object-cover"
                     src={item.image}
@@ -91,7 +91,7 @@ export default function Tours() {
                 </p>
                 <Link
                   href="#"
-                  className="bg-primary-100 text-white rounded-lg text-sm px-6 py-3 mt-2 mb-2 lg:w-full text-center"
+                  className="bg-primary-100 text-white rounded-lg text-sm px-6 py-3 mt-2 mb-2 lg:w-full text-center hover:bg-secondary transition-all duration-500"
                 >
                   Details
                 </Link>
