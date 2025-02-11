@@ -20,10 +20,10 @@ export default function Adventures() {
   }, []);
 
   // Parallax effect calculation
-  const parallaxEffect = scrollY * 0.2;
+  const parallaxEffect = scrollY * 0.1;
 
   return (
-    <div className="relative mt-20 min-h-[1600px] overflow-hidden">
+    <div className="relative mt-20 min-h-[1230px] overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-fixed bg-center bg-no-repeat brightness-50"
         style={{
