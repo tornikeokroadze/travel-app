@@ -20,10 +20,10 @@ export default function Adventures() {
   }, []);
 
   // Parallax effect calculation
-  const parallaxEffect = scrollY * 0.1;
+  const parallaxEffect = scrollY * 0.07;
 
   return (
-    <div className="relative mt-20 min-h-[1230px] overflow-hidden">
+    <div className="relative mt-20 min-h-[1100px] overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-fixed bg-center bg-no-repeat brightness-50"
         style={{
@@ -34,15 +34,15 @@ export default function Adventures() {
       />
 
       <div className="relative z-0 py-8 flex flex-col justify-center items-center text-center min-h-screen w-full">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-10 px-4 sm:px-8">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-semibold text-white mb-10 px-4 sm:px-8">
           ADVENTURES
         </h2>
 
-        <div className="mt-8 sm:mt-20 mb-16 sm:mb-6 px-7 sm:px-8 w-full">
+        <div className="mt-8 sm:mt-20 mb-8 sm:mb-4 px-7 sm:px-8 w-full">
           <Tours haveBorder={false} />
         </div>
 
-        <div className="flex justify-center items-center mb-8 w-full">
+        <div className="flex justify-center items-center w-full">
           <AllButton />
         </div>
       </div>
