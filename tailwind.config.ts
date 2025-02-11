@@ -15,6 +15,8 @@ export default {
         },
         secondary: {
           "100": "#787780",
+          "200": "#3C394BFF",
+          "300": "#2D2B3AFF",
           DEFAULT: "#313041"
         },
         filter: {
