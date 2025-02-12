@@ -39,8 +39,9 @@ const Header = () => {
     { href: "/", label: "Our Tours" },
     { href: "/one-day-tours", label: "One Day Tours" },
     { href: "/experience", label: "Experience" },
-    { href: "/transfers", label: "Transfers" },
-    { href: "/destination", label: "Destination" },
+    { href: "/adventures", label: "Adventures" },
+    { href: "/all-tours", label: "All Tours" },
+    { href: "/Our Team", label: "Our Team" },
     { href: "/about", label: "About" },
   ];
 

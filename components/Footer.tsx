@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <div className="bg-secondary w-full mt-20">
       <div className="relative min-h-[400px] flex flex-col py-10">
-        <div className="flex flex-col md:flex-row justify-between items-start w-full max-w-7xl px-4 mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-start w-full max-w-7xl px-4 mx-auto mb-10 md:mb-0">
           {/* Left Section */}
           <div className="flex flex-col gap-10">
             <Link href="/">
@@ -79,13 +79,13 @@ export default function Footer() {
                 </Link>
                 <Link href="">
                   <li className="relative group hover:translate-x-6 hover:text-white transition-all duration-500 mb-4">
-                    About
+                    Our Team
                     <span className="absolute bottom-1/2 -left-4 w-3 h-[2px] bg-primary-100 scale-x-0 group-hover:scale-x-100 transition-all"></span>
                   </li>
                 </Link>
                 <Link href="">
                   <li className="relative group hover:translate-x-6 hover:text-white transition-all duration-500 mb-4">
-                    Our Team
+                    About
                     <span className="absolute bottom-1/2 -left-4 w-3 h-[2px] bg-primary-100 scale-x-0 group-hover:scale-x-100 transition-all"></span>
                   </li>
                 </Link>
@@ -111,7 +111,7 @@ export default function Footer() {
                 <IoArrowUp size={24} className="text-white" />
               </button>
 
-              <div className="hidden sm:flex gap-4">
+              <div className="hidden md:flex gap-4">
                 <a
                   href="https://facebook.com"
                   target="_blank"

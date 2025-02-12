@@ -17,9 +17,11 @@ const Hero = ({ addStyle }: { addStyle?: string }) => {
     { href: "/", label: "Our Tours" },
     { href: "/one-day-tours", label: "One Day Tours" },
     { href: "/experience", label: "Experience" },
-    { href: "/transfers", label: "Transfers" },
-    { href: "/destination", label: "Destination" },
+    { href: "/adventures", label: "Adventures" },
+    { href: "/all-tours", label: "All Tours" },
+    { href: "/Our Team", label: "Our Team" },
     { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" },
   ];
 
   return (
@@ -42,7 +44,7 @@ const Hero = ({ addStyle }: { addStyle?: string }) => {
 
           {/* Desktop Navigation */}
           <ul className="hidden lg:flex gap-12 text-white font-semibold py-6">
-            {links.map((link) => {
+            {links.slice(0, -1).map((link) => {
               const isActive = pathname === link.href;
 
               return (
