@@ -2,15 +2,27 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
 
 ```bash
+#Install and insialize prisma
+npm install @prisma/client prisma
+npx prisma init
+
+#Push prisma changes
+npx prisma generate
+npx prisma db push
+
+#run the development server
+npm install
 npm run dev
 # or
+yarn install
 yarn dev
 # or
+pnpm install
 pnpm dev
 # or
+bun install
 bun dev
 ```
 
