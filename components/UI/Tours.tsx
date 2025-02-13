@@ -7,27 +7,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Settings as SlickSettings } from "react-slick";
 
-interface Tour {
-  id: number;
-  title: string;
-  description: string;
-  location: string;
-  price: number;
-  duration: number;
-  startDate: string;
-  endDate: string;
-  image: string;
-  type?: {
-    name: string;
-  };
-  bestOffer?: boolean;
-}
-
-interface ToursProps {
-  tours: Tour[];
-  haveBorder?: boolean;
-}
-
 const Slider = dynamic(
   () =>
     import("react-slick").then(
@@ -36,7 +15,7 @@ const Slider = dynamic(
   { ssr: false }
 );
 
-export default function Tours({ tours = [], haveBorder }: ToursProps) {
+export default function Tours({ tours = [], haveBorder }: { tours: any[]; haveBorder?: boolean }) {
   const settings: SlickSettings = {
     dots: true,
     infinite: true,
