@@ -4,14 +4,6 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 
 ```bash
-#Install and insialize prisma
-npm install @prisma/client prisma
-npx prisma init
-
-#Push prisma changes
-npx prisma generate
-npx prisma db push
-
 #run the development server
 npm install
 npm run dev
@@ -24,6 +16,14 @@ pnpm dev
 # or
 bun install
 bun dev
+
+#Install and insialize prisma
+npm install @prisma/client prisma
+npx prisma init
+
+#Push prisma changes
+npx prisma generate
+npx prisma db push
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
