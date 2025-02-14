@@ -5,9 +5,11 @@ import AllButton from "./UI/AllButton";
 import { useFetchData } from "@/utils/fetchData";
 
 export default function OneDayTours() {
-  const { data: tours, loading, error } = useFetchData("tours?duration=1&limit=6");
-
-  if (loading) return <div>Loading...</div>;
+  const {
+    data: tours,
+    loading,
+    error,
+  } = useFetchData("tours?duration=1&limit=6");
 
   return (
     <div className="px-4 mt-20">

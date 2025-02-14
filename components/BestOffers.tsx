@@ -1,6 +1,7 @@
 "use client";
 import { useFetchData } from "@/utils/fetchData";
 import AllButton from "./UI/AllButton";
+import { ThreeDot } from "react-loading-indicators";
 
 export default function BestOffers() {
   const {
@@ -9,7 +10,18 @@ export default function BestOffers() {
     error,
   } = useFetchData("tours?bestOffer=true&limit=4");
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <div className="flex justify-center items-center mt-20">
+        <ThreeDot
+          variant="bounce"
+          color="#313041"
+          size="small"
+          text=""
+          textColor=""
+        />
+      </div>
+    );
 
   return (
     <div className="flex flex-col justify-center items-center px-4 sm:px-0 mt-20">
@@ -22,7 +34,9 @@ export default function BestOffers() {
           {tours.slice(0, 2).map((tour, index) => (
             <div
               key={tour.id}
-              className={`w-full ${index === 0 ? "sm:w-2/3" : "sm:w-1/3"} relative group overflow-hidden cursor-pointer`}
+              className={`w-full ${
+                index === 0 ? "sm:w-2/3" : "sm:w-1/3"
+              } relative group overflow-hidden cursor-pointer`}
             >
               <img
                 className="h-64 sm:h-96 w-full object-cover rounded-lg hover:scale-105 transition-all duration-300"
@@ -42,7 +56,9 @@ export default function BestOffers() {
           {tours.slice(2, 4).map((tour, index) => (
             <div
               key={tour.id}
-              className={`w-full ${index === 0 ? "sm:w-1/3" : "sm:w-2/3"} relative group overflow-hidden cursor-pointer`}
+              className={`w-full ${
+                index === 0 ? "sm:w-1/3" : "sm:w-2/3"
+              } relative group overflow-hidden cursor-pointer`}
             >
               <img
                 className="h-64 sm:h-96 w-full object-cover rounded-lg hover:scale-105 transition-all duration-300"

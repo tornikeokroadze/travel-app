@@ -6,8 +6,6 @@ import { useFetchData } from "@/utils/fetchData";
 export default function Experience() {
   const { data: tours, loading, error } = useFetchData("tours?limit=3");
 
-  if (loading) return <div>Loading...</div>;
-
   return (
     <div className="max-w-7xl mx-auto px-8 lg:px-2">
       <div className="flex flex-col sm:flex-row justify-between items-center gap-4">

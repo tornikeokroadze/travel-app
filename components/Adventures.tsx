@@ -26,8 +26,6 @@ export default function Adventures() {
   // Parallax effect calculation
   const parallaxEffect = scrollY * 0.07;
 
-  if (loading) return <div>Loading...</div>;
-
   return (
     <div className="relative mt-20 min-h-[1100px] overflow-hidden">
       <div
