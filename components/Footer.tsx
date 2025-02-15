@@ -42,25 +42,25 @@ export default function Footer() {
           <div className="flex gap-10 sm:gap-16 mt-6 lg:mt-0">
             <div className="flex flex-col">
               <ul className="text-gray-400 text-md">
-                <Link href="">
+                <Link href="/">
                   <li className="relative group hover:translate-x-6 hover:text-white transition-all duration-500 mb-4">
                     Our Tours
                     <span className="absolute bottom-1/2 -left-4 w-3 h-[2px] bg-primary-100 scale-x-0 group-hover:scale-x-100 transition-all"></span>
                   </li>
                 </Link>
-                <Link href="">
+                <Link href="/one-day-tours">
                   <li className="relative group hover:translate-x-6 hover:text-white transition-all duration-500 mb-4">
                     One Day Tours
                     <span className="absolute bottom-1/2 -left-4 w-3 h-[2px] bg-primary-100 scale-x-0 group-hover:scale-x-100 transition-all"></span>
                   </li>
                 </Link>
-                <Link href="">
+                <Link href="/experience">
                   <li className="relative group hover:translate-x-6 hover:text-white transition-all duration-500 mb-4">
                     Experience
                     <span className="absolute bottom-1/2 -left-4 w-3 h-[2px] bg-primary-100 scale-x-0 group-hover:scale-x-100 transition-all"></span>
                   </li>
                 </Link>
-                <Link href="">
+                <Link href="/adventures">
                   <li className="relative group hover:translate-x-6 hover:text-white transition-all duration-500 mb-4">
                     Adventures
                     <span className="absolute bottom-1/2 -left-4 w-3 h-[2px] bg-primary-100 scale-x-0 group-hover:scale-x-100 transition-all"></span>
@@ -71,25 +71,25 @@ export default function Footer() {
 
             <div className="flex flex-col">
               <ul className="text-gray-400 text-md">
-                <Link href="">
+                <Link href="/all-tours">
                   <li className="relative group hover:translate-x-6 hover:text-white transition-all duration-500 mb-4">
                     All Tours
                     <span className="absolute bottom-1/2 -left-4 w-3 h-[2px] bg-primary-100 scale-x-0 group-hover:scale-x-100 transition-all"></span>
                   </li>
                 </Link>
-                <Link href="">
+                <Link href="/our-team">
                   <li className="relative group hover:translate-x-6 hover:text-white transition-all duration-500 mb-4">
                     Our Team
                     <span className="absolute bottom-1/2 -left-4 w-3 h-[2px] bg-primary-100 scale-x-0 group-hover:scale-x-100 transition-all"></span>
                   </li>
                 </Link>
-                <Link href="">
+                <Link href="/about">
                   <li className="relative group hover:translate-x-6 hover:text-white transition-all duration-500 mb-4">
                     About
                     <span className="absolute bottom-1/2 -left-4 w-3 h-[2px] bg-primary-100 scale-x-0 group-hover:scale-x-100 transition-all"></span>
                   </li>
                 </Link>
-                <Link href="">
+                <Link href="/contact">
                   <li className="relative group hover:translate-x-6 hover:text-white transition-all duration-500 mb-4">
                     Contact
                     <span className="absolute bottom-1/2 -left-4 w-3 h-[2px] bg-primary-100 scale-x-0 group-hover:scale-x-100 transition-all"></span>

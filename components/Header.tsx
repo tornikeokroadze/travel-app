@@ -41,7 +41,7 @@ const Header = () => {
     { href: "/experience", label: "Experience" },
     { href: "/adventures", label: "Adventures" },
     { href: "/all-tours", label: "All Tours" },
-    { href: "/Our Team", label: "Our Team" },
+    { href: "/our-team", label: "Our Team" },
     { href: "/about", label: "About" },
   ];
 
