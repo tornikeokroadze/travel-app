@@ -1,17 +1,30 @@
 "use client";
-import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { useFetchData } from "@/utils/fetchData";
 
 export default function FindTrip() {
-  const [city, setCity] = useState("");
+  const router = useRouter();
   const [direction, setDirection] = useState("");
   const [tripType, setTripType] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
+  const { data: types, loading, error } = useFetchData("tourTypes");
+  const { data: locations } = useFetchData("locations");
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ city, direction, tripType, startDate, endDate });
+
+    // Create query string for filters
+    const queryParams = new URLSearchParams();
+    if (direction) queryParams.append("direction", direction);
+    if (tripType) queryParams.append("tripType", tripType);
+    if (startDate) queryParams.append("startDate", startDate);
+    if (endDate) queryParams.append("endDate", endDate);
+
+    router.push(`/all-tours?${queryParams.toString()}`);
   };
 
   return (
@@ -32,12 +45,13 @@ export default function FindTrip() {
               className="bg-white text-lg outline-none"
               value={direction}
               onChange={(e) => setDirection(e.target.value)}
-              required
             >
               <option value="">Select</option>
-              <option value="Tbilisi">Tbilisi</option>
-              <option value="Batumi">Batumi</option>
-              <option value="Kutaisi">Kutaisi</option>
+              {locations.map((location) => (
+                <option key={location} value={location}>
+                  {location}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -50,9 +64,11 @@ export default function FindTrip() {
               onChange={(e) => setTripType(e.target.value)}
             >
               <option value="">Select</option>
-              <option value="Adventure">Adventure</option>
-              <option value="Relaxation">Relaxation</option>
-              <option value="Cultural">Cultural</option>
+              {types.map((type) => (
+                <option key={type.id} value={type.name}>
+                  {type.name}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -64,7 +80,6 @@ export default function FindTrip() {
               className="bg-white text-lg outline-none"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              required
             />
           </div>
 
@@ -76,12 +91,10 @@ export default function FindTrip() {
               className="bg-white text-lg outline-none"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
-              required
             />
           </div>
         </div>
 
-        {/* Explore Button */}
         <button
           type="submit"
           className="relative w-full lg:w-48 min-h-12 lg:min-h-24 px-6 bg-primary-100 font-semibold text-white overflow-hidden rounded-b-lg lg:rounded-r-lg lg:rounded-bl-none group"
@@ -93,7 +106,7 @@ export default function FindTrip() {
         </button>
       </form>
 
-      <Link href="/">
+      <Link href="/all-tours">
         <p className="text-white text-lg font-semibold text-center mt-6 hover:text-primary transition-colors duration-1000">
           SEE ALL TOURS NOW
         </p>
