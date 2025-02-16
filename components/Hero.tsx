@@ -7,11 +7,13 @@ import Contact from "./Contact";
 const Hero = ({ addStyle }: { addStyle?: string }) => {
   const [mounted, setMounted] = useState(false);
   const [toggle, setToggle] = useState(false);
-  const pathname = usePathname();
+  const pathname: string | null = usePathname();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const heroStyle: string = pathname === "/" ? "min-h-screen" : "min-h-96";
 
   const links = [
     { href: "/", label: "Our Tours" },
@@ -19,13 +21,13 @@ const Hero = ({ addStyle }: { addStyle?: string }) => {
     { href: "/experience", label: "Experience" },
     { href: "/adventures", label: "Adventures" },
     { href: "/all-tours", label: "All Tours" },
-    { href: "/Our Team", label: "Our Team" },
+    { href: "/our-team", label: "Our Team" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
   ];
 
   return (
-    <div className={`relative ${addStyle}`}>
+    <div className={`relative ${heroStyle} ${addStyle}`}>
       <div className="absolute inset-0 z-0">
         <img
           src="/background.jpg"
@@ -37,9 +39,15 @@ const Hero = ({ addStyle }: { addStyle?: string }) => {
       <div className="relative z-10">
         <Contact />
 
-        <div className={`flex lg:justify-around items-center px-9 lg:px-28 py-7 fixed bg-secondary lg:relative lg:bg-opacity-0 w-full`}>
+        <div
+          className={`flex lg:justify-around items-center px-9 lg:px-28 py-7 fixed bg-secondary lg:relative lg:bg-opacity-0 w-full`}
+        >
           <Link href="/">
-            <img src="/logo.png" alt="logo" className="w-26 h-10 lg:w-40 lg:h-14" />
+            <img
+              src="/logo.png"
+              alt="logo"
+              className="w-26 h-10 lg:w-40 lg:h-14"
+            />
           </Link>
 
           {/* Desktop Navigation */}

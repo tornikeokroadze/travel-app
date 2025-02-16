@@ -5,6 +5,8 @@ import Adventures from "@/components/Adventures";
 import Experience from "@/components/Experience";
 
 export default function Home() {
+  
+
   return (
     <div>
       <FindTrip />

@@ -15,40 +15,7 @@ const Slider = dynamic(
   { ssr: false }
 );
 
-const data = [
-  {
-    id: 1,
-    image: "/tours/1.jpg",
-    title: "Tour 1",
-    description: "Lorem ipsum dolor sit amet consectetur.",
-  },
-  {
-    id: 2,
-    image: "/tours/2.jpg",
-    title: "Tour 2",
-    description: "Explore the beautiful places with us.",
-  },
-  {
-    id: 3,
-    image: "/tours/3.jpg",
-    title: "Tour 3",
-    description: "Adventure awaits you in this amazing.",
-  },
-  {
-    id: 4,
-    image: "/tours/4.jpg",
-    title: "Tour 4",
-    description: "Discover new experiences with us.",
-  },
-  {
-    id: 5,
-    image: "/tours/5.jpg",
-    title: "Tour 5",
-    description: "A journey you'll never forget.",
-  },
-] as const;
-
-export default function Tours({haveBorder}: {haveBorder?: boolean}) {
+export default function Tours({ tours = [], haveBorder }: { tours: any[]; haveBorder?: boolean }) {
   const settings: SlickSettings = {
     dots: true,
     infinite: true,
@@ -72,14 +39,21 @@ export default function Tours({haveBorder}: {haveBorder?: boolean}) {
   return (
     <div className="max-w-7xl mx-auto">
       <Slider {...settings}>
-        {data.map((item) => (
+        {tours.map((item) => (
           <div key={item.id} className="px-2">
-            <div className={`bg-white ${haveBorder && " border border-gray-200"} rounded-lg shadow-sm h-full flex flex-col`}>
+            <div
+              className={`bg-white ${
+                haveBorder && " border border-gray-200"
+              } rounded-lg shadow-sm h-full flex flex-col`}
+            >
               <Link href="#">
-                <div className="relative w-full overflow-hidden rounded-t-lg" style={{ height: 350 }}>
+                <div
+                  className="relative w-full overflow-hidden rounded-t-lg"
+                  style={{ height: 350 }}
+                >
                   <Image
                     className="rounded-t-lg object-cover hover:scale-105 transition-all duration-500"
-                    src={item.image}
+                    src={`/tours/${item.image}`}
                     alt={item.title}
                     layout="fill"
                     priority
@@ -94,7 +68,9 @@ export default function Tours({haveBorder}: {haveBorder?: boolean}) {
                 </Link>
 
                 <p className="mb-3 font-normal text-gray-700 text-center">
-                  {item.description}
+                  {item.description.length > 34
+                    ? item.description.slice(0, 34) + "..."
+                    : item.description}
                 </p>
                 <Link
                   href="#"

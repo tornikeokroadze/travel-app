@@ -2,9 +2,13 @@
 import { useState, useEffect } from "react";
 import Tours from "./UI/Tours";
 import AllButton from "./UI/AllButton";
+import { useFetchData } from "@/utils/fetchData";
 
 export default function Adventures() {
   const [scrollY, setScrollY] = useState(0);
+
+  //fetch tours
+  const { data: tours, loading, error } = useFetchData("tours?limit=6");
 
   // Listen for scroll events
   useEffect(() => {
@@ -39,7 +43,7 @@ export default function Adventures() {
         </h2>
 
         <div className="mt-8 sm:mt-20 mb-8 sm:mb-4 px-7 sm:px-8 w-full">
-          <Tours haveBorder={false} />
+          <Tours haveBorder={false} tours={tours} />
         </div>
 
         <div className="flex justify-center items-center w-full">
