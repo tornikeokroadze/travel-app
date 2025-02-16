@@ -25,25 +25,9 @@ export default function FindTrip() {
         className="flex flex-col lg:flex-row p-4 lg:p-0"
       >
         <div className="grid grid-cols-2 lg:flex shadow-lg rounded-t-lg lg:rounded-l-lg lg:rounded-tr-none overflow-hidden bg-white">
-          {/* City Selection */}
-          <div className="flex flex-col w-full lg:w-48 h-24 border-b sm:border-b-0 lg:border-r border-gray-300 px-6 justify-center">
-            <span className="text-sm text-gray-500 mb-2">City</span>
-            <select
-              className="bg-white text-lg outline-none"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              required
-            >
-              <option value="">Select</option>
-              <option value="Tbilisi">Tbilisi</option>
-              <option value="Batumi">Batumi</option>
-              <option value="Kutaisi">Kutaisi</option>
-            </select>
-          </div>
-
           {/* Direction Selection */}
           <div className="flex flex-col w-full lg:w-48 h-24 border-b sm:border-b-0 lg:border-r border-gray-300 px-6 justify-center">
-            <span className="text-sm text-gray-500 mb-2">Direction</span>
+            <span className="text-sm text-gray-500 mb-2">Location</span>
             <select
               className="bg-white text-lg outline-none"
               value={direction}
