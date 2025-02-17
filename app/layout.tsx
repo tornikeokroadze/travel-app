@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Footer from "@/components/Footer";
+import Subscribe from "@/components/Subscribe";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,6 +36,7 @@ export default function RootLayout({
           <Header />
           <Hero />
           <main className="flex-1">{children}</main>
+          <Subscribe />
           <Footer />
         </div>
       </body>

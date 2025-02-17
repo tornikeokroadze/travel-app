@@ -9,7 +9,7 @@ export default function Footer() {
   };
 
   return (
-    <div className="bg-secondary w-full mt-20">
+    <div className="bg-secondary w-full">
       <div className="relative min-h-[400px] flex flex-col py-10">
         <div className="flex flex-col md:flex-row justify-between items-start w-full max-w-7xl px-4 mx-auto mb-10 md:mb-0">
           {/* Left Section */}
