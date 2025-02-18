@@ -1,15 +1,18 @@
 "use client";
 
-
 import { usefetchObj } from "@/utils/fetchObj";
 import { notFound, useParams } from "next/navigation";
 import { ThreeDot } from "react-loading-indicators";
 import Book from "@/components/Book";
+import { useFetchData } from "@/utils/fetchData";
+import ToursCard from "@/components/UI/ToursCard";
+import AllButton from "@/components/UI/AllButton";
 
 export default function TourDetail() {
   const params = useParams();
 
   const { data: tour, loading, error } = usefetchObj(`allTours/${params.id}`);
+  const { data: tours } = useFetchData(`tours?limit=3&id=${params.id}`);
 
   if (!tour || error) return notFound();
 
@@ -61,12 +64,25 @@ export default function TourDetail() {
       <p className="text-md text-primary-100 font-semibold mt-4">
         Tour duration: {formatDate(tour.startDate)} - {formatDate(tour.endDate)}
       </p>
-      <h1 className="text-2xl sm:text-4xl font-semibold my-2">
-        {tour.title}
-      </h1>
+      <h1 className="text-2xl sm:text-4xl font-semibold my-2">{tour.title}</h1>
       <p className="text-sm text-primary-100">Location: {tour.location}</p>
       <p className="text-sm text-primary-100">Price: {tour.price}$</p>
       <p className="mt-4 text-lg">{tour.description}</p>
+
+      <hr className="mt-20 h-1/2 border-filter" />
+      <div className="mt-12">
+        <h2 className="text-2xl sm:text-4xl font-semibold text-center">
+          ALL TOURS
+        </h2>
+
+        <div className="my-6">
+          <ToursCard tours={tours} hrefTo="all-tours" />
+        </div>
+
+        <div className="flex justify-center items-center">
+          <AllButton />
+        </div>
+      </div>
     </div>
   );
 }

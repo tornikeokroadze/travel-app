@@ -7,6 +7,7 @@ export async function GET(req: NextRequest) {
     const bestOffer = url.searchParams.get("bestOffer");
     const duration = url.searchParams.get("duration");
     const limit = url.searchParams.get("limit");
+    const id = url.searchParams.get("id");
 
     let whereClause: any = {};
 
@@ -16,6 +17,10 @@ export async function GET(req: NextRequest) {
 
     if (duration) {
       whereClause.duration = Number(duration);
+    }
+
+    if (id) {
+      whereClause.id = { not: Number(id) };
     }
 
     // Fetch tours from database
