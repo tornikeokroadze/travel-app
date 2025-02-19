@@ -10,7 +10,7 @@ export const usefetchObj = (route: string) => {
       try {
         const response = await fetch(`/api/${route}`);
         if (!response.ok) {
-          throw new Error(`Failed to fetch data: ${response.statusText}`);
+          throw new Error(`Failed to fetch object: ${response.statusText}`);
         }
         const result = await response.json();
         setData(result);

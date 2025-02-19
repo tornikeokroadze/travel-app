@@ -7,6 +7,16 @@ import Book from "@/components/Book";
 import { useFetchData } from "@/utils/fetchData";
 import ToursCard from "@/components/UI/ToursCard";
 import AllButton from "@/components/UI/AllButton";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+
+const stripePublishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+
+if (!stripePublishableKey) {
+  throw new Error("Stripe publishable key is not defined in the environment variables.");
+}
+
+const stripePromise = loadStripe(stripePublishableKey);
 
 export default function TourDetail() {
   const params = useParams();
@@ -58,7 +68,9 @@ export default function TourDetail() {
           className="w-full max-h-[500px] object-cover rounded-lg shadow-xl"
         />
         <div className="flex-grow">
-          <Book />
+          <Elements stripe={stripePromise}>
+            <Book tourId={tour.id} tourPrice={tour.price} />
+          </Elements>
         </div>
       </div>
       <p className="text-md text-primary-100 font-semibold mt-4">
