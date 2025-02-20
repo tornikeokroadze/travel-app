@@ -44,7 +44,7 @@ export default function Footer() {
               <ul className="text-gray-400 text-md">
                 <Link href="/">
                   <li className="relative group hover:translate-x-6 hover:text-white transition-all duration-500 mb-4">
-                    Our Tours
+                    Home
                     <span className="absolute bottom-1/2 -left-4 w-3 h-[2px] bg-primary-100 scale-x-0 group-hover:scale-x-100 transition-all"></span>
                   </li>
                 </Link>

@@ -18,11 +18,11 @@ export default function OneDayTours() {
       </h2>
 
       <div className="mt-20 mb-16 sm:mb-6">
-        <Tours haveBorder={true} tours={tours} />
+        <Tours haveBorder={true} tours={tours} hrefTo="all-tours" />
       </div>
 
       <div className="flex justify-center items-center">
-        <AllButton />
+        <AllButton hrefTo="one-day-tours"/>
       </div>
     </div>
   );

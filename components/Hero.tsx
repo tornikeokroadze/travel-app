@@ -16,7 +16,7 @@ const Hero = ({ addStyle }: { addStyle?: string }) => {
   const heroStyle: string = pathname === "/" ? "min-h-screen" : "min-h-96";
 
   const links = [
-    { href: "/", label: "Our Tours" },
+    { href: "/", label: "Home" },
     { href: "/one-day-tours", label: "One Day Tours" },
     { href: "/experience", label: "Experience" },
     { href: "/adventures", label: "Adventures" },

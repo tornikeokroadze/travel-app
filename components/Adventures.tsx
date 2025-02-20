@@ -43,11 +43,11 @@ export default function Adventures() {
         </h2>
 
         <div className="mt-8 sm:mt-20 mb-8 sm:mb-4 px-7 sm:px-8 w-full">
-          <Tours haveBorder={false} tours={tours} />
+          <Tours haveBorder={false} tours={tours} hrefTo="adventures" />
         </div>
 
         <div className="flex justify-center items-center w-full">
-          <AllButton />
+          <AllButton hrefTo="adventures"/>
         </div>
       </div>
     </div>

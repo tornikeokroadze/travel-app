@@ -15,7 +15,7 @@ const Slider = dynamic(
   { ssr: false }
 );
 
-export default function Tours({ tours = [], haveBorder }: { tours: any[]; haveBorder?: boolean }) {
+export default function Tours({ tours = [], haveBorder, hrefTo }: { tours: any[]; haveBorder?: boolean, hrefTo: String }) {
   const settings: SlickSettings = {
     dots: true,
     infinite: true,
@@ -46,7 +46,7 @@ export default function Tours({ tours = [], haveBorder }: { tours: any[]; haveBo
                 haveBorder && " border border-gray-200"
               } rounded-lg shadow-sm h-full flex flex-col`}
             >
-              <Link href="#">
+              <Link href={`/${hrefTo}/${item.id}`}>
                 <div
                   className="relative w-full overflow-hidden rounded-t-lg"
                   style={{ height: 350 }}
@@ -61,7 +61,7 @@ export default function Tours({ tours = [], haveBorder }: { tours: any[]; haveBo
                 </div>
               </Link>
               <div className="p-8 flex flex-col justify-between flex-grow">
-                <Link href="#">
+                <Link href={`/${hrefTo}/${item.id}`}>
                   <h5 className="mb-2 text-2xl font-bold tracking-tight text-center hover:text-primary transition-all duration-500">
                     {item.title}
                   </h5>
@@ -73,7 +73,7 @@ export default function Tours({ tours = [], haveBorder }: { tours: any[]; haveBo
                     : item.description}
                 </p>
                 <Link
-                  href="#"
+                  href={`/${hrefTo}/${item.id}`}
                   className="bg-primary-100 text-white rounded-lg text-sm px-6 py-3 mt-2 mb-2 lg:w-full text-center hover:bg-secondary transition-all duration-500"
                 >
                   Details

@@ -92,7 +92,7 @@ export default function TourDetail() {
         </div>
 
         <div className="flex justify-center items-center">
-          <AllButton />
+          <AllButton hrefTo="all-tours" />
         </div>
       </div>
     </div>

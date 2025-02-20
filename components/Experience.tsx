@@ -12,7 +12,7 @@ export default function Experience() {
         <h2 className="text-2xl sm:text-4xl font-semibold text-center sm:text-left">
           EXPERIENCE
         </h2>
-        <AllButton />
+        <AllButton hrefTo="experience" />
       </div>
 
       <ToursCard tours={tours} hrefTo="experience" />

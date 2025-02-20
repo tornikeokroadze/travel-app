@@ -2,6 +2,7 @@
 import { useFetchData } from "@/utils/fetchData";
 import AllButton from "./UI/AllButton";
 import { ThreeDot } from "react-loading-indicators";
+import Link from "next/link";
 
 export default function BestOffers() {
   const {
@@ -32,8 +33,9 @@ export default function BestOffers() {
       <div className="mt-6 sm:mt-10 space-y-4 px-4">
         <div className="flex flex-col sm:flex-row gap-4">
           {tours.slice(0, 2).map((tour, index) => (
-            <div
+            <Link
               key={tour.id}
+              href={`/all-tours/${tour.id}`}
               className={`w-full ${
                 index === 0 ? "sm:w-2/3" : "sm:w-1/3"
               } relative group overflow-hidden cursor-pointer`}
@@ -48,14 +50,15 @@ export default function BestOffers() {
                   {tour.title}
                 </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4">
           {tours.slice(2, 4).map((tour, index) => (
-            <div
+            <Link
               key={tour.id}
+              href={`/all-tours/${tour.id}`}
               className={`w-full ${
                 index === 0 ? "sm:w-1/3" : "sm:w-2/3"
               } relative group overflow-hidden cursor-pointer`}
@@ -70,13 +73,13 @@ export default function BestOffers() {
                   {tour.title}
                 </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
 
       <div className="flex justify-center items-center mt-12 lg:mt-0">
-        <AllButton />
+        <AllButton hrefTo="all-tours"/>
       </div>
     </div>
   );
