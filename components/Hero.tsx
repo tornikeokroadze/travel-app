@@ -13,6 +13,10 @@ const Hero = ({ addStyle }: { addStyle?: string }) => {
     setMounted(true);
   }, []);
 
+  const pageTitle = pathname
+    ? pathname.split("/")[1].replace(/-/g, " ").toUpperCase()
+    : "";
+
   const heroStyle: string = pathname === "/" ? "min-h-screen" : "min-h-96";
 
   const links = [
@@ -105,6 +109,7 @@ const Hero = ({ addStyle }: { addStyle?: string }) => {
                             ? "border-b-2 border-primary"
                             : "border-b-2 border-transparent"
                         }`}
+                        onClick={() => setToggle(!toggle)}
                       >
                         {link.label}
                       </Link>
@@ -116,6 +121,13 @@ const Hero = ({ addStyle }: { addStyle?: string }) => {
           </div>
         </div>
         <hr className="h-1/2 border-t-1 border-filter" />
+        {pathname !== "/" && (
+          <div className="flex mt-48 items-center justify-center lg:mt-20">
+            <h2 className="text-3xl md:text-4xl lg:text-4xl font-semibold text-white mb-10 px-4 sm:px-8">
+              {pageTitle}
+            </h2>
+          </div>
+        )}
       </div>
     </div>
   );

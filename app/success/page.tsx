@@ -27,6 +27,8 @@ export default function page() {
     return () => clearTimeout(timer);
   }, [router]);
 
+  if (!sessionId) return null;
+
   if (loading)
     return (
       <div className="flex justify-center items-center mt-20">

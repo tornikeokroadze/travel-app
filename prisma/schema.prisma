@@ -55,3 +55,12 @@ model Book {
   updatedAt  DateTime @updatedAt
   tour       Tour     @relation(fields: [tourId], references: [id])
 }
+
+model About {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  image       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
