@@ -1,7 +1,10 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function GET(req: Request) {
   try {
@@ -53,6 +56,24 @@ export async function GET(req: Request) {
         paymentStatus: session.payment_status,
       },
     });
+
+    // Send email notification using Resend
+    /* const emailResponse = await resend.emails.send({
+      from: "your-email@resend.com", //sender   this needs to verify your domain on https://resend.com/domains
+      to: email, // recipient
+      subject: "Booking Confirmation",
+      html: `
+        <p>Dear ${firstName} ${lastName},</p>
+        <p>Thank you for booking a tour with us!</p>
+        <p><strong>Tour ID:</strong> ${tourId}</p>
+        <p><strong>People:</strong> ${peopleNum}</p>
+        <p><strong>Total Cost:</strong> ${
+          session.amount_total / 100
+        } ${session.currency.toUpperCase()}</p>
+        <p>We look forward to seeing you!</p>
+        <p>Best regards,<br>Tour Booking Team</p>
+      `,
+    }); */
 
     return NextResponse.json({
       success: true,

@@ -22,6 +22,7 @@
     "react-loading-indicators": "^1.0.0",
     "react-scroll-parallax": "^3.4.5",
     "react-slick": "^0.30.3",
+    "resend": "^4.1.2",
     "slick-carousel": "^1.8.1",
     "stripe": "^17.6.0",
     "validator": "^13.12.0"
