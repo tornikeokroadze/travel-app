@@ -7,6 +7,9 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
   try {
     const tour = await prisma.tour.findUnique({
       where: { id: parseInt(id) },
+      include: {
+        gallery: true,
+      },
     });
 
     if (!tour) {

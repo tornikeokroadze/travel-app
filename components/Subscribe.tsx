@@ -49,15 +49,26 @@ export default function Subscribe() {
   }, [message]);
 
   return (
-    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-center mt-20 py-16 px-12 lg:px-2 bg-primary-100">
-      <div>
+    <div className="relative flex flex-col lg:flex-row lg:items-center lg:justify-center mt-20 py-16 px-12 lg:px-2 bg-primary-100 overflow-hidden">
+      {/* Background Image Effect */}
+      <div className="absolute inset-0">
+        <img
+          src="/book-now-shape.png"
+          className="w-full h-full object-cover opacity-10"
+          alt="Background Shape"
+        />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10">
         <p className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-semibold text-white mr-8">
           Subscribe to our newsletter!
         </p>
       </div>
+
       <form
         onSubmit={handleSubscribe}
-        className="flex flex-col lg:flex-row lg:p-0 space-y-2 lg:space-y-0 lg:space-x-8"
+        className="relative z-10 flex flex-col lg:flex-row lg:p-0 space-y-2 lg:space-y-0 lg:space-x-8"
       >
         <input
           type="email"

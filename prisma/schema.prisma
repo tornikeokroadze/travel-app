@@ -29,6 +29,7 @@ model Tour {
   updatedAt   DateTime @updatedAt
   type        Type     @relation(fields: [typeId], references: [id])
   bookings    Book[]
+  gallery    Gallery[]
 }
 
 model ContactLid {
@@ -63,4 +64,13 @@ model About {
   image       String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model Gallery {
+  id          Int      @id @default(autoincrement())
+  tourId      Int
+  image       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  tour        Tour     @relation(fields: [tourId], references: [id])
 }

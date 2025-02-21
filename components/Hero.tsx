@@ -40,7 +40,7 @@ const Hero = ({ addStyle }: { addStyle?: string }) => {
         />
       </div>
 
-      <div className="relative z-10">
+      <div className="relative z-20">
         <Contact />
 
         <div
