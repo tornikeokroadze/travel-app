@@ -74,3 +74,16 @@ model Gallery {
   updatedAt   DateTime @updatedAt
   tour        Tour     @relation(fields: [tourId], references: [id])
 }
+
+model Contact {
+  id          Int      @id @default(autoincrement())
+  phone       String
+  location    String?
+  email       String
+  facebook    String?
+  instagram   String?
+  youtube     String?
+  whatsapp    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

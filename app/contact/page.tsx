@@ -1,7 +1,9 @@
 "use client";
+import { usefetchObj } from "@/utils/fetchObj";
 import { useState, useEffect } from "react";
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 import { IoCall, IoMail, IoLocation } from "react-icons/io5";
+import { ThreeDot } from "react-loading-indicators";
 
 export default function page() {
   const [firstName, setFirstName] = useState("");
@@ -9,6 +11,12 @@ export default function page() {
   const [comment, setComment] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const {
+    data: contactInfo,
+    loading: fetchLoading,
+    error,
+  } = usefetchObj("contact");
 
   const handleContact = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -54,6 +62,19 @@ export default function page() {
     }
   }, [message]);
 
+  if (fetchLoading)
+    return (
+      <div className="flex justify-center items-center mt-20">
+        <ThreeDot
+          variant="bounce"
+          color="#313041"
+          size="small"
+          text=""
+          textColor=""
+        />
+      </div>
+    );
+
   return (
     <div className="max-w-7xl mx-auto px-8 lg:px-0 mt-16">
       <div className="flex flex-col lg:flex-row justify-center lg:items-start">
@@ -62,33 +83,39 @@ export default function page() {
             Any Question? Feel Free to Contact
           </h1>
           <div className="flex gap-4 mt-8">
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className="bg-primary-100 p-4 rounded-full hover:scale-105 hover:bg-secondary hover:rotate-[360deg] transition-transform duration-500 ease-in-out">
-                <FaFacebook size={18} className="text-white" />
-              </div>
-            </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className="bg-primary-100 p-4 rounded-full hover:scale-105 hover:bg-secondary hover:rotate-[360deg] transition-transform duration-500 ease-in-out">
-                <FaInstagram size={18} className="text-white" />
-              </div>
-            </a>
-            <a
-              href="https://youtube.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className="bg-primary-100 p-4 rounded-full hover:scale-105 hover:bg-secondary hover:rotate-[360deg] transition-transform duration-500 ease-in-out">
-                <FaYoutube size={18} className="text-white" />
-              </div>
-            </a>
+            {contactInfo.facebook && (
+              <a
+                href={contactInfo.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="bg-primary-100 p-4 rounded-full hover:scale-105 hover:bg-secondary hover:rotate-[360deg] transition-transform duration-500 ease-in-out">
+                  <FaFacebook size={18} className="text-white" />
+                </div>
+              </a>
+            )}
+            {contactInfo.instagram && (
+              <a
+                href={contactInfo.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="bg-primary-100 p-4 rounded-full hover:scale-105 hover:bg-secondary hover:rotate-[360deg] transition-transform duration-500 ease-in-out">
+                  <FaInstagram size={18} className="text-white" />
+                </div>
+              </a>
+            )}
+            {contactInfo.youtube && (
+              <a
+                href={contactInfo.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="bg-primary-100 p-4 rounded-full hover:scale-105 hover:bg-secondary hover:rotate-[360deg] transition-transform duration-500 ease-in-out">
+                  <FaYoutube size={18} className="text-white" />
+                </div>
+              </a>
+            )}
           </div>
         </div>
 
@@ -134,51 +161,63 @@ export default function page() {
       </div>
 
       <div className="flex flex-wrap justify-center mt-12 gap-4">
-        <div className="flex items-center border rounded-lg shadow-md w-full lg:w-auto py-10 px-16 group">
-          <a href="tel:+995555555555" className="flex items-center gap-2">
-            <div className="rounded-full bg-slate-50 p-4 group-hover:bg-primary-100 transition-all ease-in-out duration-500 group-hover:scale-105">
-              <IoCall
-                size={28}
-                className="text-primary group-hover:text-white transition-colors duration-500"
-              />
-            </div>
-            <span className="text-xl ml-4 text-gray-400 group-hover:text-primary-100 duration-500">
-              +995 555 55 55 55
-            </span>
-          </a>
-        </div>
+        {contactInfo.phone && (
+          <div className="flex items-center border rounded-lg shadow-md w-full lg:w-auto py-10 px-16 group">
+            <a
+              href={`tel:${contactInfo.phone}`}
+              className="flex items-center gap-2"
+            >
+              <div className="rounded-full bg-slate-50 p-4 group-hover:bg-primary-100 transition-all ease-in-out duration-500 group-hover:scale-105">
+                <IoCall
+                  size={28}
+                  className="text-primary group-hover:text-white transition-colors duration-500"
+                />
+              </div>
+              <span className="text-xl ml-4 text-gray-400 group-hover:text-primary-100 duration-500">
+                {contactInfo.phone}
+              </span>
+            </a>
+          </div>
+        )}
 
-        <div className="flex items-center border rounded-lg shadow-md w-full lg:w-auto py-10 px-16 group">
-          <a
-            href="https://www.google.com/maps?q=Tbilisi,+Georgia"
-            target="_blank"
-            className="flex items-center gap-2"
-          >
-            <div className="rounded-full bg-slate-50 p-4 group-hover:bg-primary-100 transition-all ease-in-out duration-500 group-hover:scale-105">
-              <IoLocation
-                size={28}
-                className="text-primary group-hover:text-white transition-colors duration-500"
-              />
-            </div>
-            <span className="text-xl ml-4 text-gray-400 group-hover:text-primary-100 duration-500">
-              Georgia, Tbilisi
-            </span>
-          </a>
-        </div>
+        {contactInfo.location && (
+          <div className="flex items-center border rounded-lg shadow-md w-full lg:w-auto py-10 px-16 group">
+            <a
+              href={`https://www.google.com/maps?q=${contactInfo.location}`}
+              target="_blank"
+              className="flex items-center gap-2"
+            >
+              <div className="rounded-full bg-slate-50 p-4 group-hover:bg-primary-100 transition-all ease-in-out duration-500 group-hover:scale-105">
+                <IoLocation
+                  size={28}
+                  className="text-primary group-hover:text-white transition-colors duration-500"
+                />
+              </div>
+              <span className="text-xl ml-4 text-gray-400 group-hover:text-primary-100 duration-500">
+                {contactInfo.location}
+              </span>
+            </a>
+          </div>
+        )}
 
-        <div className="flex items-center border rounded-lg shadow-md w-full lg:w-auto py-10 px-16 group">
-          <a href="mailto:info@example.com" className="flex items-center gap-2">
-            <div className="rounded-full bg-slate-50 p-4 group-hover:bg-primary-100 transition-all ease-in-out duration-500 group-hover:scale-105">
-              <IoMail
-                size={28}
-                className="text-primary group-hover:text-white transition-colors duration-500"
-              />
-            </div>
-            <span className="text-xl ml-4 text-gray-400 group-hover:text-primary-100 duration-500">
-              info@example.com
-            </span>
-          </a>
-        </div>
+        {contactInfo.email && (
+          <div className="flex items-center border rounded-lg shadow-md w-full lg:w-auto py-10 px-16 group">
+            <a
+              href={`mailto:${contactInfo.email}`}
+              className="flex items-center gap-2"
+            >
+              <div className="rounded-full bg-slate-50 p-4 group-hover:bg-primary-100 transition-all ease-in-out duration-500 group-hover:scale-105">
+                <IoMail
+                  size={28}
+                  className="text-primary group-hover:text-white transition-colors duration-500"
+                />
+              </div>
+              <span className="text-xl ml-4 text-gray-400 group-hover:text-primary-100 duration-500">
+                {contactInfo.email}
+              </span>
+            </a>
+          </div>
+        )}
       </div>
 
       {message && (

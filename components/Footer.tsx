@@ -2,8 +2,11 @@
 import Link from "next/link";
 import { IoCall, IoMail, IoArrowUp } from "react-icons/io5";
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
+import { usefetchObj } from "@/utils/fetchObj";
 
 export default function Footer() {
+  const { data: contactInfo } = usefetchObj("contact");
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -19,20 +22,23 @@ export default function Footer() {
             </Link>
 
             <div className="flex flex-col gap-3">
-              <a href="tel:+995555555555" className="flex items-center gap-2">
+              <a
+                href={`tel:${contactInfo.phone}`}
+                className="flex items-center gap-2"
+              >
                 <IoCall size={20} className="text-primary" />
                 <span className="text-md text-gray-400 hover:text-primary-100 duration-300">
-                  +995 555 55 55 55
+                  {contactInfo.phone}
                 </span>
               </a>
 
               <a
-                href="mailto:info@example.com"
+                href={`mailto:${contactInfo.email}`}
                 className="flex items-center gap-2"
               >
                 <IoMail size={20} className="text-primary" />
                 <span className="text-md text-gray-400 hover:text-primary-100 duration-300">
-                  info@example.com
+                  {contactInfo.email}
                 </span>
               </a>
             </div>
@@ -112,33 +118,41 @@ export default function Footer() {
               </button>
 
               <div className="hidden md:flex gap-4">
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div className="bg-secondary-300 p-4 rounded-full hover:scale-105 hover:bg-primary-100 hover:rotate-[360deg] transition-transform duration-500 ease-in-out">
-                    <FaFacebook size={14} className="text-white" />
-                  </div>
-                </a>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div className="bg-secondary-300 p-4 rounded-full hover:scale-105 hover:bg-primary-100 hover:rotate-[360deg] transition-transform duration-500 ease-in-out">
-                    <FaInstagram size={14} className="text-white" />
-                  </div>
-                </a>
-                <a
-                  href="https://youtube.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div className="bg-secondary-300 p-4 rounded-full hover:scale-105 hover:bg-primary-100 hover:rotate-[360deg] transition-transform duration-500 ease-in-out">
-                    <FaYoutube size={14} className="text-white" />
-                  </div>
-                </a>
+                {contactInfo.facebook && (
+                  <a
+                    href={contactInfo.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="bg-secondary-300 p-4 rounded-full hover:scale-105 hover:bg-primary-100 hover:rotate-[360deg] transition-transform duration-500 ease-in-out">
+                      <FaFacebook size={14} className="text-white" />
+                    </div>
+                  </a>
+                )}
+
+                {contactInfo.instagram && (
+                  <a
+                    href={contactInfo.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="bg-secondary-300 p-4 rounded-full hover:scale-105 hover:bg-primary-100 hover:rotate-[360deg] transition-transform duration-500 ease-in-out">
+                      <FaInstagram size={14} className="text-white" />
+                    </div>
+                  </a>
+                )}
+
+                {contactInfo.youtube && (
+                  <a
+                    href={contactInfo.youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="bg-secondary-300 p-4 rounded-full hover:scale-105 hover:bg-primary-100 hover:rotate-[360deg] transition-transform duration-500 ease-in-out">
+                      <FaYoutube size={14} className="text-white" />
+                    </div>
+                  </a>
+                )}
               </div>
             </div>
 

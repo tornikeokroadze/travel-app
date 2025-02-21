@@ -6,9 +6,9 @@ export async function GET() {
     const types = await prisma.type.findMany();
     return NextResponse.json(types);
   } catch (err) {
-    console.error("Failed to fetch people:", err);
+    console.error("Failed to fetch types:", err);
     return NextResponse.json(
-      { error: "Failed to fetch people" },
+      { error: "Failed to fetch types" },
       { status: 500 }
     );
   }

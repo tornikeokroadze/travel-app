@@ -14,9 +14,9 @@ export async function GET() {
 
     return NextResponse.json(uniqueLocations);
   } catch (err) {
-    console.error("Failed to fetch people:", err);
+    console.error("Failed to fetch locations:", err);
     return NextResponse.json(
-      { error: "Failed to fetch people" },
+      { error: "Failed to fetch locations" },
       { status: 500 }
     );
   }

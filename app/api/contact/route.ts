@@ -3,12 +3,12 @@ import { prisma } from "@/lib/prisma";
 
 export async function GET() {
   try {
-    const about = await prisma.about.findFirst();
-    return NextResponse.json(about);
+    const contact = await prisma.contact.findFirst();
+    return NextResponse.json(contact);
   } catch (err) {
-    console.error("Failed to fetch about:", err);
+    console.error("Failed to fetch people:", err);
     return NextResponse.json(
-      { error: "Failed to fetch about" },
+      { error: "Failed to fetch people" },
       { status: 500 }
     );
   }

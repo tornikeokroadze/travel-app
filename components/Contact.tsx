@@ -1,64 +1,80 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { IoCall, IoMail } from "react-icons/io5";
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
+import { usefetchObj } from "@/utils/fetchObj";
 
 export default function Contact() {
   const [isMounted, setIsMounted] = useState(false);
+
+  const { data: contactInfo } = usefetchObj("contact");
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
   return (
-    <div
-      className={`justify-around items-center bg-filter hidden lg:flex`}
-    >
+    <div className={`justify-around items-center bg-filter hidden lg:flex`}>
       <div className="flex gap-10">
-        <a href="tel:+995 555 55 55 55" className="flex items-center gap-2">
+        <a
+          href={`tel:${contactInfo.phone}`}
+          className="flex items-center gap-2"
+        >
           <IoCall size={20} className="text-primary" />
           <span className="text-sm text-gray-400 hover:text-white duration-1000">
-            +995 555 55 55 55
+            {contactInfo.phone}
           </span>
         </a>
 
-        <a href="mailto:info@example.com" className="flex items-center gap-2">
+        <a
+          href={`mailto:${contactInfo.email}`}
+          className="flex items-center gap-2"
+        >
           <IoMail size={20} className="text-primary" />
           <span className="text-sm text-gray-400 hover:text-white duration-1000">
-            info@example.com
+            {contactInfo.email}
           </span>
         </a>
       </div>
 
       <div className="flex gap-6 items-center">
-        <a
-          href="https://facebook.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaFacebook
-            size={15}
-            className="text-white hover:text-primary transition duration-300"
-          />
-        </a>
+        {contactInfo.facebook && (
+          <a
+            href={contactInfo.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaFacebook
+              size={15}
+              className="text-white hover:text-primary transition duration-300"
+            />
+          </a>
+        )}
 
-        <a
-          href="https://instagram.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaInstagram
-            size={15}
-            className="text-white hover:text-primary transition duration-300"
-          />
-        </a>
-
-        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-          <FaYoutube
-            size={15}
-            className="text-white hover:text-primary transition duration-300"
-          />
-        </a>
+        {contactInfo.instagram && (
+          <a
+            href={contactInfo.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram
+              size={15}
+              className="text-white hover:text-primary transition duration-300"
+            />
+          </a>
+        )}
+        {contactInfo.youtube && (
+          <a
+            href={contactInfo.youtube}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaYoutube
+              size={15}
+              className="text-white hover:text-primary transition duration-300"
+            />
+          </a>
+        )}
 
         <Link href="/contact">
           <button className="relative px-12 py-2 bg-primary-100 font-semibold text-white overflow-hidden group border border-primary-100">
