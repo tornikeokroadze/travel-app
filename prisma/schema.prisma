@@ -87,3 +87,16 @@ model Contact {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+model Team {
+  id          Int      @id @default(autoincrement())
+  name        String
+  surname     String?
+  position    String?
+  image       String?
+  facebook    String?
+  instagram   String?
+  twitter     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

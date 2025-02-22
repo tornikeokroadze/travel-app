@@ -54,7 +54,7 @@ export default function Subscribe() {
       <div className="absolute inset-0">
         <img
           src="/book-now-shape.png"
-          className="w-full h-full object-cover opacity-10"
+          className="w-full h-full object-cover opacity-5"
           alt="Background Shape"
         />
       </div>

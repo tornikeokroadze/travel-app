@@ -3,6 +3,7 @@ import FindTrip from "../components/FindTrip";
 import OneDayTours from "@/components/OneDayTours";
 import Adventures from "@/components/Adventures";
 import Experience from "@/components/Experience";
+import Team from "@/components/Team";
 
 export default function Home() {
   
@@ -14,6 +15,7 @@ export default function Home() {
       <OneDayTours />
       <Adventures />
       <Experience />
+      <Team />
     </div>
   );
 }
