@@ -6,6 +6,8 @@ import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Footer from "@/components/Footer";
 import Subscribe from "@/components/Subscribe";
+import IntercomChat from "@/components/IntercomChat";
+import CookieConsent from "@/components/CookieConsent";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,7 +37,11 @@ export default function RootLayout({
         <div className="flex flex-col min-h-screen">
           <Header />
           <Hero />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1">
+            {children}
+            <IntercomChat />
+            <CookieConsent />
+          </main>
           <Subscribe />
           <Footer />
         </div>
