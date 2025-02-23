@@ -18,7 +18,7 @@ export default function OneDayTours() {
       </h2>
 
       <div className="my-12 sm:mb-6">
-        <Tours haveBorder={true} tours={tours} hrefTo="all-tours" />
+        <Tours haveBorder={true} tours={tours} hrefTo="all-tours" slidesToShow={3} />
       </div>
 
       <div className="flex justify-center items-center">

@@ -8,6 +8,7 @@ export async function GET(req: NextRequest) {
     const duration = url.searchParams.get("duration");
     const limit = url.searchParams.get("limit");
     const id = url.searchParams.get("id");
+    const typeId = url.searchParams.get("typeId");
     const adventures = url.searchParams.get("adventures") === "true";
     const experience = url.searchParams.get("experience") === "true";
 
@@ -31,6 +32,7 @@ export async function GET(req: NextRequest) {
         ...whereClause,
         adventures,
         experience,
+        ...(typeId ? { typeId: Number(typeId) } : {}),
       },
       take: limit ? Number(limit) : undefined,
       orderBy: { createdAt: "desc" },

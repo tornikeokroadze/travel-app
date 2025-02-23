@@ -15,12 +15,12 @@ const Slider = dynamic(
   { ssr: false }
 );
 
-export default function Tours({ tours = [], haveBorder, hrefTo }: { tours: any[]; haveBorder?: boolean, hrefTo: String }) {
+export default function Tours({ tours = [], haveBorder, hrefTo, slidesToShow }: { tours: any[]; haveBorder?: boolean, hrefTo: String; slidesToShow: number }) {
   const settings: SlickSettings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: slidesToShow,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
