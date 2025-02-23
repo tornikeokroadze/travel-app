@@ -14,7 +14,7 @@ export default function Home() {
       <BestOffers />
       <OneDayTours />
       <Adventures />
-      <Experience />
+      <Experience moreStyle="max-w-7xl px-8 lg:px-2"/>
       <Team />
     </div>
   );

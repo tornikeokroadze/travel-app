@@ -5,9 +5,9 @@ import { ThreeDot } from "react-loading-indicators";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Adventures from "@/components/Adventures";
 import Tours from "@/components/UI/Tours";
 import { useFetchData } from "@/utils/fetchData";
+import Experience from "@/components/Experience";
 
 export default function TourDetail() {
   const params = useParams();
@@ -15,7 +15,7 @@ export default function TourDetail() {
   const { data: tour, loading, error } = usefetchObj(`allTours/${params.id}`);
 
   const { data: tours } = useFetchData(
-    `tours?adventures=false&experience=false&typeId=${tour.typeId}&limit=6&${
+    `tours?experience=false&adventures=false&typeId=${tour.typeId}&limit=6&${
       params.id ? `&id=${params.id}` : ""
     }`
   );
@@ -94,10 +94,10 @@ export default function TourDetail() {
           Location: {tour.location}
         </p>
         <p className="mt-4 text-base sm:text-lg">{tour.description}</p>
-      </div>
 
-      <div className="mt-12 sm:mt-16">
-        <Adventures />
+        <hr className="my-20 h-1/2 border-filter" />
+
+        <Experience moreStyle="max-w-[90rem]" />
       </div>
     </>
   );
