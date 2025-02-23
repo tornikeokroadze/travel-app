@@ -21,8 +21,8 @@ export default function Team() {
           OUR TEAM
         </h2>
 
-        <div className="max-w-7xl mx-auto">
-          <div className="mt-20 mb-16 sm:mb-6 px-4 lg:px-2">
+        <div className="max-w-7xl mx-auto my-12">
+          <div className="sm:mb-6 px-4 lg:px-2">
             <TeamCard teams={teams} />
           </div>
         </div>

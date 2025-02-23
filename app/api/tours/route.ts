@@ -8,6 +8,8 @@ export async function GET(req: NextRequest) {
     const duration = url.searchParams.get("duration");
     const limit = url.searchParams.get("limit");
     const id = url.searchParams.get("id");
+    const adventures = url.searchParams.get("adventures") === "true";
+    const experience = url.searchParams.get("experience") === "true";
 
     let whereClause: any = {};
 
@@ -25,7 +27,11 @@ export async function GET(req: NextRequest) {
 
     // Fetch tours from database
     const tours = await prisma.tour.findMany({
-      where: whereClause,
+      where: {
+        ...whereClause,
+        adventures,
+        experience,
+      },
       take: limit ? Number(limit) : undefined,
       orderBy: { createdAt: "desc" },
       include: { type: true },

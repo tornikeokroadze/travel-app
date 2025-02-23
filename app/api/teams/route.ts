@@ -1,14 +1,18 @@
-import { NextResponse, NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
-export async function GET(req: NextRequest) {
+export async function GET(request: Request) {
   try {
-    const url = new URL(req.url);
-    const limit = url.searchParams.get("limit");
+    const { searchParams } = new URL(request.url);
+    const limit = searchParams.get("limit");
+    const page = parseInt(searchParams.get("page") || "1", 10);
+    const pageSize = 12;
 
-    // Fetch tours from database
+    // Fetch team from database
     const teams = await prisma.team.findMany({
-      take: limit ? Number(limit) : undefined,
+      skip: (page - 1) * pageSize,
+      // take: pageSize,
+      take: limit ? Number(limit) : pageSize,
       orderBy: { createdAt: "desc" },
     });
 

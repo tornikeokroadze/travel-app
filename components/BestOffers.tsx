@@ -25,12 +25,12 @@ export default function BestOffers() {
     );
 
   return (
-    <div className="flex flex-col justify-center items-center px-4 sm:px-0 mt-20">
+    <div className="flex flex-col justify-center items-center mt-20">
       <h2 className="text-2xl sm:text-4xl font-semibold text-center">
         BEST OFFERS
       </h2>
 
-      <div className="mt-6 sm:mt-10 space-y-4 px-4">
+      <div className="mt-6 sm:mt-10 space-y-4 px-4 xl:px-0">
         <div className="flex flex-col sm:flex-row gap-4">
           {tours.slice(0, 2).map((tour, index) => (
             <Link

@@ -4,7 +4,7 @@ import { useFetchData } from "@/utils/fetchData";
 import ToursCard from "./UI/ToursCard";
 
 export default function Experience() {
-  const { data: tours, loading, error } = useFetchData("tours?limit=3");
+  const { data: tours, loading, error } = useFetchData("tours?experience=true&limit=3");
 
   return (
     <div className="max-w-7xl mx-auto px-8 lg:px-2">

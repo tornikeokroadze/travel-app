@@ -17,7 +17,7 @@ export default function OneDayTours() {
         ONE DAY TOURS
       </h2>
 
-      <div className="mt-20 mb-16 sm:mb-6">
+      <div className="my-12 sm:mb-6">
         <Tours haveBorder={true} tours={tours} hrefTo="all-tours" />
       </div>
 

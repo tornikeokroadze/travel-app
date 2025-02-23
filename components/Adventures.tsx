@@ -8,7 +8,7 @@ export default function Adventures() {
   const [scrollY, setScrollY] = useState(0);
 
   //fetch tours
-  const { data: tours, loading, error } = useFetchData("tours?limit=6");
+  const { data: tours, loading, error } = useFetchData("tours?adventures=true&limit=6");
 
   // Listen for scroll events
   useEffect(() => {

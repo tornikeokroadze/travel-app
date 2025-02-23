@@ -1,15 +1,16 @@
-import { NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
-import { parse } from 'url';
+import { NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  
-  const direction = searchParams.get('direction') || '';
-  const tripType = searchParams.get('tripType') || '';
-  const startDate = searchParams.get('startDate') || '';
-  const endDate = searchParams.get('endDate') || '';
-  const page = parseInt(searchParams.get('page') || '1', 10);
+
+  const direction = searchParams.get("direction") || "";
+  const tripType = searchParams.get("tripType") || "";
+  const startDate = searchParams.get("startDate") || "";
+  const endDate = searchParams.get("endDate") || "";
+  const adventures = searchParams.get("adventures") === "true";
+  const experience = searchParams.get("experience") === "true";
+  const page = parseInt(searchParams.get("page") || "1", 10);
   const pageSize = 12;
 
   const whereConditions: any = {};
@@ -17,7 +18,7 @@ export async function GET(request: Request) {
   if (direction) {
     whereConditions.location = {
       contains: direction,
-      mode: 'insensitive', // Case-insensitive search
+      mode: "insensitive", // Case-insensitive search
     };
   }
 
@@ -25,7 +26,7 @@ export async function GET(request: Request) {
     whereConditions.type = {
       name: {
         contains: tripType,
-        mode: 'insensitive',
+        mode: "insensitive",
       },
     };
   }
@@ -40,22 +41,30 @@ export async function GET(request: Request) {
 
   try {
     const tours = await prisma.tour.findMany({
-      where: whereConditions,
+      where: {
+        ...whereConditions,
+        adventures,
+        experience,
+      },
       skip: (page - 1) * pageSize,
       take: pageSize,
       include: {
         type: true,
       },
       orderBy: {
-        startDate: 'asc',
+        startDate: "asc",
       },
     });
 
     return NextResponse.json(tours);
   } catch (error) {
-    console.error('Error fetching tours:', error);
+    console.error("Error fetching tours:", error);
     return NextResponse.json(
-      { error: 'Error fetching tours: ' + (error instanceof Error ? error.message : 'Unknown error') },
+      {
+        error:
+          "Error fetching tours: " +
+          (error instanceof Error ? error.message : "Unknown error"),
+      },
       { status: 500 }
     );
   }

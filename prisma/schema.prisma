@@ -25,6 +25,8 @@ model Tour {
   image       String?
   typeId      Int
   bestOffer   Boolean  @default(false)
+  adventures  Boolean  @default(false)
+  experience  Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   type        Type     @relation(fields: [typeId], references: [id])
