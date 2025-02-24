@@ -8,6 +8,8 @@ export async function GET(request: Request) {
   const tripType = searchParams.get("tripType") || "";
   const startDate = searchParams.get("startDate") || "";
   const endDate = searchParams.get("endDate") || "";
+  const duration = searchParams.get("duration");
+  const bestOffer = searchParams.get("bestOffer") === "true";
   const adventures = searchParams.get("adventures") === "true";
   const experience = searchParams.get("experience") === "true";
   const page = parseInt(searchParams.get("page") || "1", 10);
@@ -37,6 +39,14 @@ export async function GET(request: Request) {
 
   if (endDate) {
     whereConditions.endDate = { lte: new Date(endDate) };
+  }
+
+  if (duration) {
+    whereConditions.duration = Number(duration);
+  }
+
+  if (bestOffer) {
+    whereConditions.bestOffer = true;
   }
 
   try {

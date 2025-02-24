@@ -17,7 +17,7 @@ export default function Experience({moreStyle}: {moreStyle: String}) {
         <AllButton hrefTo="experience" />
       </div>
 
-      <ToursCard tours={tours} hrefTo="experience" />
+      <ToursCard tours={tours} hrefTo="experience" showDetail={false} showDuration={false} />
       
     </div>
   );

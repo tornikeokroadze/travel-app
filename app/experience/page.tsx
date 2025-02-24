@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useFetchData } from "@/utils/fetchData";
 import { ThreeDot } from "react-loading-indicators";
-import AdventuresCard from "@/components/UI/AdventuresCard";
+import ExperienceCard from "@/components/UI/ExperienceCard";
 
 export default function Page() {
   const [page, setPage] = useState(1);
@@ -40,7 +40,7 @@ export default function Page() {
         </div>
       ) : (
         <>
-          <AdventuresCard adventures={experience} hrefTo="experience" />
+          <ExperienceCard experience={experience} hrefTo="experience" />
 
           <div className="flex justify-center mt-8 space-x-6 items-center">
             <button

@@ -86,13 +86,14 @@ export default function TourDetail() {
             </div>
           )}
         </div>
-
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold mt-12 xl:-mt-28">
+        
+        <h1 className={`text-2xl sm:text-3xl md:text-4xl font-semibold mt-12 ${tour.gallery?.length > 0 ? '' : 'xl:-mt-28'}`}>
           {tour.title}
         </h1>
         <p className="text-sm sm:text-base text-primary-100 mt-2">
           Location: {tour.location}
         </p>
+        <p className="text-sm text-primary-100">type: {tour.type.name}</p>
         <p className="mt-4 text-base sm:text-lg">{tour.description}</p>
       </div>
 

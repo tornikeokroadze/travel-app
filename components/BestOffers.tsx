@@ -1,6 +1,5 @@
 "use client";
 import { useFetchData } from "@/utils/fetchData";
-import AllButton from "./UI/AllButton";
 import { ThreeDot } from "react-loading-indicators";
 import Link from "next/link";
 
@@ -37,15 +36,15 @@ export default function BestOffers() {
               key={tour.id}
               href={`/all-tours/${tour.id}`}
               className={`w-full ${
-                index === 0 ? "sm:w-2/3" : "sm:w-1/3"
-              } relative group overflow-hidden cursor-pointer`}
+                index === 0 ? "sm:w-1/3" : "sm:w-2/3"
+              } relative group overflow-hidden rounded-lg cursor-pointer`}
             >
               <img
-                className="h-64 sm:h-96 w-full object-cover rounded-lg hover:scale-105 transition-all duration-300"
+                className="h-64 sm:h-96 w-full object-cover rounded-lg group-hover:scale-105 transition-all duration-300"
                 src={`/tours/${tour.image}`}
                 alt={tour.title}
               />
-              <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 translate-y-full transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 flex items-end p-4 sm:p-6 rounded-lg">
+              <div className="absolute inset-0 bg-black bg-opacity-35 opacity-0 translate-y-full transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 flex items-end p-4 sm:p-6 rounded-lg">
                 <span className="text-white text-lg sm:text-xl font-semibold">
                   {tour.title}
                 </span>
@@ -60,11 +59,11 @@ export default function BestOffers() {
               key={tour.id}
               href={`/all-tours/${tour.id}`}
               className={`w-full ${
-                index === 0 ? "sm:w-1/3" : "sm:w-2/3"
-              } relative group overflow-hidden cursor-pointer`}
+                index === 0 ? "sm:w-2/3" : "sm:w-1/3"
+              } relative group overflow-hidden rounded-lg cursor-pointer`}
             >
               <img
-                className="h-64 sm:h-96 w-full object-cover rounded-lg hover:scale-105 transition-all duration-300"
+                className="h-64 sm:h-96 w-full object-cover rounded-lg group-hover:scale-105 transition-all duration-300"
                 src={`/tours/${tour.image}`}
                 alt={tour.title}
               />
@@ -79,7 +78,15 @@ export default function BestOffers() {
       </div>
 
       <div className="flex justify-center items-center mt-12 lg:mt-0">
-        <AllButton hrefTo="all-tours"/>
+        <Link
+          href="/all-tours?bestOffer=true"
+          className="relative sm:mt-10 px-6 sm:px-8 py-3 bg-primary-100 text-white overflow-hidden rounded-lg group text-sm sm:text-base"
+        >
+          <span className="absolute inset-0 bg-secondary transform scale-y-0 group-hover:scale-y-100 origin-bottom transition-all duration-1000"></span>
+          <span className="relative transition-colors duration-100">
+            SEE ALL
+          </span>
+        </Link>
       </div>
     </div>
   );

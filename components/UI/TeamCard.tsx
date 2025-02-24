@@ -9,7 +9,7 @@ export default function TeamCard({ teams = [] }: { teams: any[] }) {
             <img
               src={`/team/${teams.image}`}
               alt={teams.name}
-              className="rounded-lg object-cover h-full w-full hover:scale-105 transition-transform duration-500"
+              className="rounded-lg object-cover h-full w-full group-hover:scale-105 transition-transform duration-500"
             />
             {/* Hover Overlay */}
             <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 translate-y-full transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 flex items-end p-4 sm:p-6 rounded-lg" />

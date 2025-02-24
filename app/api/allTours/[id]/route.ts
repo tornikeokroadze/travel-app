@@ -9,6 +9,7 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
       where: { id: parseInt(id) },
       include: {
         gallery: true,
+        type: true,
       },
     });
 

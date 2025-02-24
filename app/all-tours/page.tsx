@@ -15,6 +15,7 @@ export default function Page() {
     tripType: searchParams.get("tripType") || "",
     startDate: searchParams.get("startDate") || "",
     endDate: searchParams.get("endDate") || "",
+    bestOffer: searchParams.get("bestOffer") || "",
   };
 
   // Convert filters to query string
@@ -55,7 +56,7 @@ export default function Page() {
         </div>
       ) : (
         <>
-          <ToursCard tours={allTours} hrefTo="all-tours" />
+          <ToursCard tours={allTours} hrefTo="all-tours" showDetail={true} showDuration={true}  />
 
           <div className="flex justify-center mt-8 space-x-6 items-center">
             <button

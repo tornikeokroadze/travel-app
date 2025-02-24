@@ -63,7 +63,7 @@ const Hero = ({ addStyle }: { addStyle?: string }) => {
                 <li key={link.href} className="relative">
                   <Link
                     href={link.href}
-                    className={`relative pb-9 transition duration-300 ${
+                    className={`relative pb-14 transition duration-300 ${
                       mounted && isActive
                         ? "border-b-2 border-primary"
                         : "border-b-2 border-transparent"
