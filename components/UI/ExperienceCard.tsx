@@ -13,7 +13,7 @@ export default function ExperienceCard({
         <div key={item.id} className="rounded-lg">
           <Link href={`/${hrefTo}/${item.id}`}>
             <div className="group relative">
-              <div className="h-[350px] w-full shadow-sm overflow-hidden rounded-lg relative">
+              <div className="h-[450px] w-full shadow-sm overflow-hidden rounded-lg relative">
                 <img
                   src={`/tours/${item.image}`}
                   alt={item.title}

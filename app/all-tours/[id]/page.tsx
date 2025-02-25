@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 import { usefetchObj } from "@/utils/fetchObj";
 import { notFound, useParams } from "next/navigation";
 import { ThreeDot } from "react-loading-indicators";
@@ -11,6 +12,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { IoHeart } from "react-icons/io5";
 
 const stripePublishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 
@@ -24,6 +26,29 @@ const stripePromise = loadStripe(stripePublishableKey);
 
 export default function TourDetail() {
   const params = useParams();
+  const [likedState, setLikedState] = useState<{ [key: string]: boolean }>({});
+
+  //for like
+  useEffect(() => {
+    const savedLikedState = localStorage.getItem("likedState");
+    if (savedLikedState) {
+      setLikedState(JSON.parse(savedLikedState));
+    }
+  }, []);
+
+  // Save likedState to localStorage whenever it changes
+  useEffect(() => {
+    if (Object.keys(likedState).length > 0) {
+      localStorage.setItem("likedState", JSON.stringify(likedState));
+    }
+  }, [likedState]);
+
+  const handleLike = (tourId: string) => {
+    setLikedState((prev) => ({
+      ...prev,
+      [tourId]: !prev[tourId],
+    }));
+  };
 
   const { data: tour, loading, error } = usefetchObj(`allTours/${params.id}`);
   const { data: tours } = useFetchData(`tours?limit=3&id=${params.id}`);
@@ -71,8 +96,19 @@ export default function TourDetail() {
   return (
     <div className="container mx-auto mt-12 px-4 lg:px-24">
       <div className="flex flex-col 2xl:flex-row justify-between items-start space-y-6 2xl:space-y-0 2xl:space-x-8">
-        {tour.gallery?.length > 0 ? (
-          <div className="flex-shrink-0 w-full h-full 2xl:w-2/3 mb-4">
+        <div className="relative flex-shrink-0 w-full h-full 2xl:w-2/3 mb-4">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              handleLike(tour.id);
+            }}
+            className="absolute top-4 right-4 text-4xl transition-transform duration-500 hover:scale-105 hover:rotate-12 z-10"
+          >
+            <IoHeart
+              className={likedState[tour.id] ? "text-red-500" : "text-white"}
+            />
+          </button>
+          {tour.gallery?.length > 0 ? (
             <Slider {...sliderSettings}>
               {tour.gallery?.map((image: { id: number; image: string }) => (
                 <div
@@ -87,14 +123,14 @@ export default function TourDetail() {
                 </div>
               ))}
             </Slider>
-          </div>
-        ) : (
-          <img
-            src={`/tours/${tour.image}`}
-            alt={tour.title}
-            className="w-full max-h-[500px] object-cover rounded-lg shadow-xl"
-          />
-        )}
+          ) : (
+            <img
+              src={`/tours/${tour.image}`}
+              alt={tour.title}
+              className="w-full max-h-[500px] object-cover rounded-lg shadow-xl"
+            />
+          )}
+        </div>
 
         <div className="flex-grow">
           <Elements stripe={stripePromise}>
@@ -118,7 +154,12 @@ export default function TourDetail() {
         </h2>
 
         <div className="my-6">
-          <ToursCard tours={tours} hrefTo="all-tours" showDetail={true} showDuration={true}  />
+          <ToursCard
+            tours={tours}
+            hrefTo="all-tours"
+            showDetail={true}
+            showDuration={true}
+          />
         </div>
 
         <div className="flex justify-center items-center">

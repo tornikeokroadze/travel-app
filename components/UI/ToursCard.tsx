@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { BsPlusLg } from "react-icons/bs";
+import { IoHeart } from "react-icons/io5";
 
 export default function ToursCard({
   tours = [],
@@ -12,6 +14,29 @@ export default function ToursCard({
   showDetail: boolean;
   showDuration: boolean;
 }) {
+  const [likedState, setLikedState] = useState<{ [key: string]: boolean }>({});
+
+  useEffect(() => {
+    const savedLikedState = localStorage.getItem("likedState");
+    if (savedLikedState) {
+      setLikedState(JSON.parse(savedLikedState));
+    }
+  }, []);
+
+  // Save likedState to localStorage whenever it changes
+  useEffect(() => {
+    if (Object.keys(likedState).length > 0) {
+      localStorage.setItem("likedState", JSON.stringify(likedState));
+    }
+  }, [likedState]);
+
+  const handleLike = (tourId: string) => {
+    setLikedState((prev) => ({
+      ...prev,
+      [tourId]: !prev[tourId],
+    }));
+  };
+
   return (
     <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-8">
       {tours.map((tour) => (
@@ -27,6 +52,21 @@ export default function ToursCard({
                 alt={tour.title}
                 className="rounded-lg object-cover h-full w-full group-hover:scale-105 transition-transform duration-500"
               />
+
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLike(tour.id);
+                }}
+                className="absolute top-4 right-4 text-4xl transition-transform duration-500 hover:scale-105 hover:rotate-12 z-10"
+              >
+                <IoHeart
+                  className={
+                    likedState[tour.id] ? "text-red-500" : "text-white"
+                  }
+                />
+              </button>
+
               {/* Hover Overlay */}
               <div className="absolute inset-0 bg-black bg-opacity-35 opacity-0 translate-y-full transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 flex items-center justify-center rounded-lg">
                 <BsPlusLg className="text-primary-100 text-4xl" />

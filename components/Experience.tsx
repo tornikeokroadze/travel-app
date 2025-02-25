@@ -1,8 +1,8 @@
 "use client";
 import AllButton from "./UI/AllButton";
 import { useFetchData } from "@/utils/fetchData";
-import ToursCard from "./UI/ToursCard";
 import { useParams } from "next/navigation";
+import ExperienceCard from "./UI/ExperienceCard";
 
 export default function Experience({moreStyle}: {moreStyle: String}) {
   const params = useParams();
@@ -17,7 +17,7 @@ export default function Experience({moreStyle}: {moreStyle: String}) {
         <AllButton hrefTo="experience" />
       </div>
 
-      <ToursCard tours={tours} hrefTo="experience" showDetail={false} showDuration={false} />
+      <ExperienceCard experience={tours} hrefTo="experience" />
       
     </div>
   );

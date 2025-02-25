@@ -1,11 +1,11 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Settings as SlickSettings } from "react-slick";
+import { useEffect, useState } from "react";
+import { IoHeart } from "react-icons/io5";
 
 const Slider = dynamic(
   () =>
@@ -15,7 +15,41 @@ const Slider = dynamic(
   { ssr: false }
 );
 
-export default function Tours({ tours = [], haveBorder, hrefTo, slidesToShow }: { tours: any[]; haveBorder?: boolean, hrefTo: String; slidesToShow: number }) {
+export default function Tours({
+  tours = [],
+  haveBorder,
+  hrefTo,
+  slidesToShow,
+}: {
+  tours: any[];
+  haveBorder?: boolean;
+  hrefTo: String;
+  slidesToShow: number;
+}) {
+  const [likedState, setLikedState] = useState<{ [key: string]: boolean }>({});
+
+  //for like
+  useEffect(() => {
+    const savedLikedState = localStorage.getItem("likedState");
+    if (savedLikedState) {
+      setLikedState(JSON.parse(savedLikedState));
+    }
+  }, []);
+
+  // Save likedState to localStorage whenever it changes
+  useEffect(() => {
+    if (Object.keys(likedState).length > 0) {
+      localStorage.setItem("likedState", JSON.stringify(likedState));
+    }
+  }, [likedState]);
+
+  const handleLike = (tourId: string) => {
+    setLikedState((prev) => ({
+      ...prev,
+      [tourId]: !prev[tourId],
+    }));
+  };
+
   const settings: SlickSettings = {
     dots: true,
     infinite: true,
@@ -58,6 +92,22 @@ export default function Tours({ tours = [], haveBorder, hrefTo, slidesToShow }: 
                     layout="fill"
                     priority
                   />
+
+                  {haveBorder && (
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleLike(item.id);
+                      }}
+                      className="absolute top-4 right-4 text-4xl transition-transform duration-500 hover:scale-105 hover:rotate-12 z-10"
+                    >
+                      <IoHeart
+                        className={
+                          likedState[item.id] ? "text-red-500" : "text-white"
+                        }
+                      />
+                    </button>
+                  )}
                 </div>
               </Link>
               <div className="p-8 flex flex-col justify-between flex-grow">

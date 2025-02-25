@@ -2,8 +2,34 @@
 import { useFetchData } from "@/utils/fetchData";
 import { ThreeDot } from "react-loading-indicators";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { IoHeart } from "react-icons/io5";
 
 export default function BestOffers() {
+  const [likedState, setLikedState] = useState<{ [key: string]: boolean }>({});
+
+  //for like
+  useEffect(() => {
+    const savedLikedState = localStorage.getItem("likedState");
+    if (savedLikedState) {
+      setLikedState(JSON.parse(savedLikedState));
+    }
+  }, []);
+
+  // Save likedState to localStorage whenever it changes
+  useEffect(() => {
+    if (Object.keys(likedState).length > 0) {
+      localStorage.setItem("likedState", JSON.stringify(likedState));
+    }
+  }, [likedState]);
+
+  const handleLike = (tourId: string) => {
+    setLikedState((prev) => ({
+      ...prev,
+      [tourId]: !prev[tourId],
+    }));
+  };
+
   const {
     data: tours,
     loading,
@@ -44,6 +70,22 @@ export default function BestOffers() {
                 src={`/tours/${tour.image}`}
                 alt={tour.title}
               />
+
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLike(tour.id);
+                }}
+                className="absolute top-4 right-4 text-4xl transition-transform duration-500 hover:scale-105 hover:rotate-12 z-10"
+              >
+                <IoHeart
+                  className={
+                    likedState[tour.id] ? "text-red-500" : "text-white"
+                  }
+                />
+              </button>
+
+              {/* Hover Overlay */}
               <div className="absolute inset-0 bg-black bg-opacity-35 opacity-0 translate-y-full transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 flex items-end p-4 sm:p-6 rounded-lg">
                 <span className="text-white text-lg sm:text-xl font-semibold">
                   {tour.title}
@@ -67,6 +109,22 @@ export default function BestOffers() {
                 src={`/tours/${tour.image}`}
                 alt={tour.title}
               />
+
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLike(tour.id);
+                }}
+                className="absolute top-4 right-4 text-4xl transition-transform duration-500 hover:scale-105 hover:rotate-12 z-10"
+              >
+                <IoHeart
+                  className={
+                    likedState[tour.id] ? "text-red-500" : "text-white"
+                  }
+                />
+              </button>
+
+              {/* Hover Overlay */}
               <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 translate-y-full transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 flex items-end p-4 sm:p-6 rounded-lg">
                 <span className="text-white text-lg sm:text-xl font-semibold">
                   {tour.title}
