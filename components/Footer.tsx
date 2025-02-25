@@ -15,7 +15,6 @@ export default function Footer() {
     <div className="bg-secondary w-full">
       <div className="relative min-h-[400px] flex flex-col py-10">
         <div className="flex flex-col md:flex-row justify-between items-start w-full max-w-7xl px-4 mx-auto mb-10 md:mb-0">
-          {/* Left Section */}
           <div className="flex flex-col gap-10">
             <Link href="/">
               <img src="/logo.png" alt="logo" width={150} height={50} />
@@ -44,7 +43,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Right Section */}
           <div className="flex gap-10 sm:gap-16 mt-6 lg:mt-0">
             <div className="flex flex-col">
               <ul className="text-gray-400 text-md">
@@ -106,7 +104,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar - Stays Bottom-Right on Large Screens, Adjusts on Mobile */}
         <div className="absolute bottom-0 right-0 w-5/6 bg-secondary-200 rounded-tl-lg overflow-hidden">
           <div className="flex flex-row items-center justify-between">
             <div className="flex items-center gap-6">

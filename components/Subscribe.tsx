@@ -50,7 +50,6 @@ export default function Subscribe() {
 
   return (
     <div className="relative flex flex-col lg:flex-row lg:items-center lg:justify-center mt-20 py-16 px-12 lg:px-2 bg-primary-100 overflow-hidden">
-      {/* Background Image Effect */}
       <div className="absolute inset-0">
         <img
           src="/book-now-shape.png"
@@ -59,7 +58,6 @@ export default function Subscribe() {
         />
       </div>
 
-      {/* Content */}
       <div className="relative z-10">
         <p className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-semibold text-white mr-8">
           Subscribe to our newsletter!
