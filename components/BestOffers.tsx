@@ -24,7 +24,7 @@ export default function BestOffers() {
     );
 
   return (
-    <div className="flex flex-col justify-center items-center mt-20">
+    <div className="flex flex-col justify-center items-center mt-20 max-w-7xl mx-auto">
       <h2 className="text-2xl sm:text-4xl font-semibold text-center">
         BEST OFFERS
       </h2>
