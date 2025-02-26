@@ -9,7 +9,7 @@ export default function Experience({moreStyle}: {moreStyle: String}) {
   const { data: tours, loading, error } = useFetchData(`tours?experience=true&limit=3${params.id ? `&id=${params.id}` : ''}`);
 
   return (
-    <div className={`mx-auto ${moreStyle}`}>
+    <div className={`mx-auto px-2 ${moreStyle}`}>
       <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
         <h2 className="text-2xl sm:text-4xl font-semibold text-center sm:text-left">
           EXPERIENCE

@@ -59,7 +59,7 @@ export async function GET(req: Request) {
 
     // Send email notification using Resend
     /* const emailResponse = await resend.emails.send({
-      from: "your-email@resend.com", //sender   this needs to verify your domain on https://resend.com/domains
+      from: "Travel App <youre-domain.com>", //sender   this needs to verify your domain on https://resend.com/domains
       to: email, // recipient
       subject: "Booking Confirmation",
       html: `

@@ -36,12 +36,12 @@ const Header = () => {
   }, [lastScrollY, mounted]);
 
   const links = [
-    { href: "/", label: "Home" },
     { href: "/one-day-tours", label: "One Day Tours" },
     { href: "/experience", label: "Experience" },
     { href: "/adventures", label: "Adventures" },
     { href: "/all-tours", label: "All Tours" },
     { href: "/our-team", label: "Our Team" },
+    { href: "/faq", label: "FAQ" },
     { href: "/about", label: "About" },
   ];
 

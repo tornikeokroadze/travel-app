@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BsPlusLg } from "react-icons/bs";
 
 export default function ExperienceCard({
   experience = [],
@@ -8,7 +9,7 @@ export default function ExperienceCard({
   hrefTo: string;
 }) {
   return (
-    <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-8 px-2">
+    <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-8">
       {experience.map((item) => (
         <div key={item.id} className="rounded-lg">
           <Link href={`/${hrefTo}/${item.id}`}>
@@ -20,7 +21,9 @@ export default function ExperienceCard({
                   className="rounded-lg object-cover h-full w-full group-hover:scale-105 transition-transform duration-500"
                 />
                 {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 translate-y-full transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 flex items-end p-4 sm:p-6 rounded-lg" />
+                <div className="absolute inset-0 bg-black bg-opacity-35 opacity-0 translate-y-full transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 flex items-center justify-center rounded-lg">
+                  <BsPlusLg className="text-primary-100 text-4xl" />
+                </div>
               </div>
 
               <p className="text-xl sm:text-2xl font-semibold mt-4 hover:text-primary transition-colors duration-500">
