@@ -8,11 +8,9 @@ export default function Page() {
   const [page, setPage] = useState(1);
   const pageSize = 12;
 
-  const {
-    data: experience,
-    loading,
-    error,
-  } = useFetchData(`allTours?experience=true&page=${page.toString()}`);
+  const { data: experience, loading } = useFetchData(
+    `allTours?experience=true&page=${page.toString()}`
+  );
 
   if (loading) {
     return (

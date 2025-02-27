@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const Accordion = ({ title, content }: {title: String; content: String}) => {
+export default function Accordion  ({ title, content }: {title: string; content: string}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleAccordion = () => {
@@ -24,4 +24,4 @@ const Accordion = ({ title, content }: {title: String; content: String}) => {
   );
 };
 
-export default Accordion;
+

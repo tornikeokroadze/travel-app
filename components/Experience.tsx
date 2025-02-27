@@ -4,9 +4,11 @@ import { useFetchData } from "@/utils/fetchData";
 import { useParams } from "next/navigation";
 import ExperienceCard from "./UI/ExperienceCard";
 
-export default function Experience({moreStyle}: {moreStyle: String}) {
+export default function Experience({ moreStyle }: { moreStyle: string }) {
   const params = useParams();
-  const { data: tours, loading, error } = useFetchData(`tours?experience=true&limit=3${params.id ? `&id=${params.id}` : ''}`);
+  const { data: tours } = useFetchData(
+    `tours?experience=true&limit=3${params.id ? `&id=${params.id}` : ""}`
+  );
 
   return (
     <div className={`mx-auto px-2 ${moreStyle}`}>
@@ -18,7 +20,6 @@ export default function Experience({moreStyle}: {moreStyle: String}) {
       </div>
 
       <ExperienceCard experience={tours} hrefTo="experience" />
-      
     </div>
   );
 }

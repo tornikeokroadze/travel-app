@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function AdventuresCard({
@@ -13,8 +14,10 @@ export default function AdventuresCard({
         <div key={adventure.id} className="border rounded-lg ">
           <Link href={`/${hrefTo}/${adventure.id}`}>
             <div className="h-[350px] w-full shadow-sm overflow-hidden rounded-t-lg">
-              <img
+              <Image
                 src={`/tours/${adventure.image}`}
+                width={1200}
+                height={350}
                 alt={adventure.title}
                 className="rounded-t-lg object-cover h-full w-full hover:scale-105 transition-transform duration-500"
               />

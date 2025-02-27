@@ -13,6 +13,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { IoHeart } from "react-icons/io5";
+import Image from "next/image";
 
 const stripePublishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 
@@ -115,8 +116,10 @@ export default function TourDetail() {
                   key={image.id}
                   className="relative w-full h-[400px] lg:h-[500px] rounded-lg overflow-hidden"
                 >
-                  <img
+                  <Image
                     src={`/tours/${image.image}`}
+                    width={1200}
+                    height={500}
                     alt={tour.title}
                     className="w-full h-full object-cover rounded-lg shadow-xl"
                   />
@@ -124,8 +127,10 @@ export default function TourDetail() {
               ))}
             </Slider>
           ) : (
-            <img
+            <Image
               src={`/tours/${tour.image}`}
+              width={1200}
+              height={500}
               alt={tour.title}
               className="w-full max-h-[500px] object-cover rounded-lg shadow-xl"
             />

@@ -1,17 +1,11 @@
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import { IoCall, IoMail } from "react-icons/io5";
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 import { usefetchObj } from "@/utils/fetchObj";
 
 export default function Contact() {
-  const [isMounted, setIsMounted] = useState(false);
 
   const { data: contactInfo } = usefetchObj("contact");
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   return (
     <div className={`justify-around items-center bg-filter hidden lg:flex`}>

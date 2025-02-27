@@ -10,7 +10,9 @@ export default function Adventures() {
   const params = useParams();
 
   //fetch tours
-  const { data: tours, loading, error } = useFetchData(`tours?adventures=true&limit=6${params.id ? `&id=${params.id}` : ''}`);
+  const { data: tours } = useFetchData(
+    `tours?adventures=true&limit=6${params.id ? `&id=${params.id}` : ""}`
+  );
 
   // Listen for scroll events
   useEffect(() => {
@@ -45,11 +47,16 @@ export default function Adventures() {
         </h2>
 
         <div className="mt-8 sm:mt-20 mb-8 sm:mb-4 px-7 sm:px-8 w-full">
-          <Tours haveBorder={false} tours={tours} hrefTo="adventures" slidesToShow={3} />
+          <Tours
+            haveBorder={false}
+            tours={tours}
+            hrefTo="adventures"
+            slidesToShow={3}
+          />
         </div>
 
         <div className="flex justify-center items-center w-full">
-          <AllButton hrefTo="adventures"/>
+          <AllButton hrefTo="adventures" />
         </div>
       </div>
     </div>

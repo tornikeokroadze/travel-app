@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { IoCheckmarkCircle } from "react-icons/io5";
 import { ThreeDot } from "react-loading-indicators";
 
-export default function page() {
+export default function Page() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session_id");

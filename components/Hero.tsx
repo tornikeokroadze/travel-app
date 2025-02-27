@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Contact from "./Contact";
+import Image from "next/image";
 
-const Hero = ({ addStyle }: { addStyle?: string }) => {
+export default function Hero ({ addStyle }: { addStyle?: string }) {
   const [mounted, setMounted] = useState(false);
   const [toggle, setToggle] = useState(false);
   const pathname: string | null = usePathname();
@@ -33,8 +34,10 @@ const Hero = ({ addStyle }: { addStyle?: string }) => {
   return (
     <div className={`relative ${heroStyle} ${addStyle}`}>
       <div className="absolute inset-0 z-0">
-        <img
+        <Image
           src="/background.jpg"
+          width={1200}
+          height={1200}
           alt="background"
           className="w-full h-full object-cover filter brightness-75"
         />
@@ -47,8 +50,10 @@ const Hero = ({ addStyle }: { addStyle?: string }) => {
           className={`flex lg:justify-around items-center px-9 lg:px-28 py-7 fixed bg-secondary lg:relative lg:bg-opacity-0 w-full`}
         >
           <Link href="/">
-            <img
+            <Image
               src="/logo.png"
+              width={150}
+              height={150}
               alt="logo"
               className="w-26 h-10 lg:w-40 lg:h-14"
             />
@@ -82,11 +87,11 @@ const Hero = ({ addStyle }: { addStyle?: string }) => {
 
           {/* mobile Navigation */}
           <div className="lg:hidden flex flex-1 justify-end items-center">
-            <img
+            <Image
               src={toggle ? "/close.svg" : "/menu.svg"}
-              alt="menu"
               width={30}
               height={30}
+              alt="menu"
               className="object-contain"
               onClick={() => setToggle(!toggle)}
             />
@@ -132,5 +137,3 @@ const Hero = ({ addStyle }: { addStyle?: string }) => {
     </div>
   );
 };
-
-export default Hero;

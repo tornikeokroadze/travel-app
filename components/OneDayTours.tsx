@@ -5,11 +5,7 @@ import AllButton from "./UI/AllButton";
 import { useFetchData } from "@/utils/fetchData";
 
 export default function OneDayTours() {
-  const {
-    data: tours,
-    loading,
-    error,
-  } = useFetchData("tours?duration=1&limit=6");
+  const { data: tours } = useFetchData("tours?duration=1&limit=6");
 
   return (
     <div className="px-4 mt-20">
@@ -18,11 +14,16 @@ export default function OneDayTours() {
       </h2>
 
       <div className="my-12 sm:mb-6">
-        <Tours haveBorder={true} tours={tours} hrefTo="all-tours" slidesToShow={3} />
+        <Tours
+          haveBorder={true}
+          tours={tours}
+          hrefTo="all-tours"
+          slidesToShow={3}
+        />
       </div>
 
       <div className="flex justify-center items-center">
-        <AllButton hrefTo="one-day-tours"/>
+        <AllButton hrefTo="one-day-tours" />
       </div>
     </div>
   );

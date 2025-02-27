@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 
 export default function TeamCard({ teams = [] }: { teams: any[] }) {
@@ -6,8 +7,10 @@ export default function TeamCard({ teams = [] }: { teams: any[] }) {
       {teams.map((teams) => (
         <div className="group relative" key={teams.id}>
           <div className="h-[350px] w-full shadow-sm overflow-hidden rounded-lg relative">
-            <img
+            <Image
               src={`/team/${teams.image}`}
+              width={1200}
+              height={350}
               alt={teams.name}
               className="rounded-lg object-cover h-full w-full group-hover:scale-105 transition-transform duration-500"
             />

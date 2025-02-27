@@ -8,11 +8,9 @@ export default function Page() {
   const [page, setPage] = useState(1);
   const pageSize = 12;
 
-  const {
-    data: oneDayTours,
-    loading,
-    error,
-  } = useFetchData(`allTours?duration=1&page=${page.toString()}`);
+  const { data: oneDayTours, loading } = useFetchData(
+    `allTours?duration=1&page=${page.toString()}`
+  );
 
   if (loading) {
     return (
@@ -40,7 +38,12 @@ export default function Page() {
         </div>
       ) : (
         <>
-          <ToursCard tours={oneDayTours} hrefTo="all-tours" showDetail={true} showDuration={false}  />
+          <ToursCard
+            tours={oneDayTours}
+            hrefTo="all-tours"
+            showDetail={true}
+            showDuration={false}
+          />
 
           <div className="flex justify-center mt-8 space-x-6 items-center">
             <button

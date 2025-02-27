@@ -27,7 +27,6 @@ export default function Page() {
   const {
     data: allTours,
     loading,
-    error,
   } = useFetchData(`allTours?${filterQuery}`);
 
   if (loading) {

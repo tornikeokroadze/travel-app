@@ -11,7 +11,7 @@ export default function FindTrip() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
-  const { data: types, loading, error } = useFetchData("tourTypes");
+  const { data: types } = useFetchData("tourTypes");
   const { data: locations } = useFetchData("locations");
 
   const handleSearch = (e: React.FormEvent) => {

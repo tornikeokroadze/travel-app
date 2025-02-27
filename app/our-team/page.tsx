@@ -5,11 +5,13 @@ import { useFetchData } from "@/utils/fetchData";
 import { useState } from "react";
 import { ThreeDot } from "react-loading-indicators";
 
-export default function page() {
+export default function Page() {
   const [page, setPage] = useState(1);
   const pageSize = 12;
 
-  const { data: teams, loading, error } = useFetchData(`teams?page=${page.toString()}`);
+  const { data: teams, loading } = useFetchData(
+    `teams?page=${page.toString()}`
+  );
 
   if (loading)
     return (

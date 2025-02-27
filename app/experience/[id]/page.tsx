@@ -8,8 +8,9 @@ import "slick-carousel/slick/slick-theme.css";
 import Tours from "@/components/UI/Tours";
 import { useFetchData } from "@/utils/fetchData";
 import Experience from "@/components/Experience";
+import Image from "next/image";
 
-export default function TourDetail() {
+export default function ExperienceDetail() {
   const params = useParams();
 
   const { data: tour, loading, error } = usefetchObj(`allTours/${params.id}`);
@@ -52,8 +53,10 @@ export default function TourDetail() {
                     key={image.id}
                     className="relative w-full aspect-[16/9] md:aspect-[4/3] xl:aspect-[3/2] rounded-lg overflow-hidden"
                   >
-                    <img
+                    <Image
                       src={`/tours/${image.image}`}
+                      width={1200}
+                      height={800}
                       alt={tour.title}
                       className="w-full h-full object-cover rounded-lg shadow-xl"
                     />
@@ -62,8 +65,10 @@ export default function TourDetail() {
               </Slider>
             </div>
           ) : (
-            <img
+            <Image
               src={`/tours/${tour.image}`}
+              width={1200}
+              height={500}
               alt={tour.title}
               className="w-full max-h-[500px] object-cover rounded-lg shadow-xl"
             />
@@ -87,7 +92,11 @@ export default function TourDetail() {
           )}
         </div>
 
-        <h1 className={`text-2xl sm:text-3xl md:text-4xl font-semibold mt-12 ${tour.gallery?.length > 0 ? '' : 'xl:-mt-28'}`}>
+        <h1
+          className={`text-2xl sm:text-3xl md:text-4xl font-semibold mt-12 ${
+            tour.gallery?.length > 0 ? "" : "xl:-mt-28"
+          }`}
+        >
           {tour.title}
         </h1>
         <p className="text-sm sm:text-base text-primary-100 mt-2">

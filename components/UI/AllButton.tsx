@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function AllButton({hrefTo, text="SEE ALL"}: {hrefTo: String; text?: String}) {
+export default function AllButton({hrefTo, text="SEE ALL"}: {hrefTo: string; text?: string}) {
   return (
     <Link
       href={`/${hrefTo}`}

@@ -2,8 +2,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
-const Header = () => {
+export default function Header () {
   const [mounted, setMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -58,7 +59,7 @@ const Header = () => {
       }`}
     >
       <Link href="/">
-        <img src="/logo.png" alt="logo" width={150} height={50} />
+        <Image src="/logo.png" width={150} height={150} alt="logo" />
       </Link>
       <ul className="flex gap-12 text-white font-semibold">
         {links.map((link) => {
@@ -86,5 +87,3 @@ const Header = () => {
     </div>
   );
 };
-
-export default Header;

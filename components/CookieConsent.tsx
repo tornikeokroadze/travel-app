@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import CookieConsent from "react-cookie-consent";
 
-const CookieConsentBanner = () => {
+export default function CookieConsentBanner () {
   const [hasConsent, setHasConsent] = useState(false);
 
   useEffect(() => {
@@ -46,5 +46,3 @@ const CookieConsentBanner = () => {
     </CookieConsent>
   );
 };
-
-export default CookieConsentBanner;

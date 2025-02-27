@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BsPlusLg } from "react-icons/bs";
 
@@ -15,8 +16,10 @@ export default function ExperienceCard({
           <Link href={`/${hrefTo}/${item.id}`}>
             <div className="group relative">
               <div className="h-[450px] w-full shadow-sm overflow-hidden rounded-lg relative">
-                <img
+                <Image
                   src={`/tours/${item.image}`}
+                  width={1200}
+                  height={450}
                   alt={item.title}
                   className="rounded-lg object-cover h-full w-full group-hover:scale-105 transition-transform duration-500"
                 />

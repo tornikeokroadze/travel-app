@@ -1,10 +1,10 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
+// import { Resend } from "resend";
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function GET(req: Request) {
   try {
@@ -44,7 +44,7 @@ export async function GET(req: Request) {
     const { metadata } = session;
     const { tourId, firstName, lastName, email, phone, peopleNum } = metadata;
 
-    const booking = await prisma.book.create({
+    await prisma.book.create({
       data: {
         tourId: Number(tourId),
         name: firstName,

@@ -15,7 +15,17 @@ export async function GET(request: Request) {
   const page = parseInt(searchParams.get("page") || "1", 10);
   const pageSize = 12;
 
-  const whereConditions: any = {};
+  // Define a type for the whereConditions object
+  type WhereConditions = {
+    location?: { contains: string; mode: "insensitive" };
+    type?: { name: { contains: string; mode: "insensitive" } };
+    startDate?: { gte: Date };
+    endDate?: { lte: Date };
+    duration?: number;
+    bestOffer?: boolean;
+  };
+
+  const whereConditions: WhereConditions = {};
 
   if (direction) {
     whereConditions.location = {

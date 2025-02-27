@@ -3,6 +3,7 @@ import Link from "next/link";
 import { IoCall, IoMail, IoArrowUp } from "react-icons/io5";
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 import { usefetchObj } from "@/utils/fetchObj";
+import Image from "next/image";
 
 export default function Footer() {
   const { data: contactInfo } = usefetchObj("contact");
@@ -17,7 +18,12 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-start w-full max-w-7xl px-4 mx-auto mb-10 md:mb-0">
           <div className="flex flex-col gap-10">
             <Link href="/">
-              <img src="/logo.png" alt="logo" width={150} height={50} />
+              <Image
+                src="/logo.png"
+                width={150}
+                height={150}
+                alt="logo"
+              />
             </Link>
 
             <div className="flex flex-col gap-3">

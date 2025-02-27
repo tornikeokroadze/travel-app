@@ -12,7 +12,13 @@ export async function GET(req: NextRequest) {
     const adventures = url.searchParams.get("adventures") === "true";
     const experience = url.searchParams.get("experience") === "true";
 
-    let whereClause: any = {};
+    type WhereClause = {
+      bestOffer?: boolean;
+      duration?: number;
+      id?: { not: number };
+    };
+
+    const whereClause: WhereClause = {};
 
     if (bestOffer === "true") {
       whereClause.bestOffer = true;

@@ -3,6 +3,7 @@
 import AllButton from "./UI/AllButton";
 import { useFetchData } from "@/utils/fetchData";
 import TeamCard from "./UI/TeamCard";
+import Image from "next/image";
 
 export default function Team() {
   const { data: teams } = useFetchData("teams?limit=4");
@@ -10,8 +11,10 @@ export default function Team() {
   return (
     <div className="relative overflow-hidden mt-20">
       <div className="absolute inset-0 -z-10">
-        <img
+        <Image
           src="/team-one-map.png"
+          width={1200}
+          height={1200}
           className="w-full h-full object-cover opacity-100"
           alt="Background Shape"
         />

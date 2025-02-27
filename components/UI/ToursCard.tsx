@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BsPlusLg } from "react-icons/bs";
@@ -47,8 +48,10 @@ export default function ToursCard({
                 showDetail ? "h-[450px]" : "h-[350px] sm:h-[450px] lg:h-[550px]"
               }`}
             >
-              <img
+              <Image
                 src={`/tours/${tour.image}`}
+                width={1200}
+                height={550}
                 alt={tour.title}
                 className="rounded-lg object-cover h-full w-full group-hover:scale-105 transition-transform duration-500"
               />

@@ -4,6 +4,7 @@ import { ThreeDot } from "react-loading-indicators";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { IoHeart } from "react-icons/io5";
+import Image from "next/image";
 
 export default function BestOffers() {
   const [likedState, setLikedState] = useState<{ [key: string]: boolean }>({});
@@ -30,11 +31,7 @@ export default function BestOffers() {
     }));
   };
 
-  const {
-    data: tours,
-    loading,
-    error,
-  } = useFetchData("tours?bestOffer=true&limit=4");
+  const { data: tours, loading } = useFetchData("tours?bestOffer=true&limit=4");
 
   if (loading)
     return (
@@ -65,8 +62,10 @@ export default function BestOffers() {
                 index === 0 ? "sm:w-1/3" : "sm:w-2/3"
               } relative group overflow-hidden rounded-lg cursor-pointer`}
             >
-              <img
+              <Image
                 className="h-64 sm:h-96 w-full object-cover rounded-lg group-hover:scale-105 transition-all duration-300"
+                width={1200}
+                height={350}
                 src={`/tours/${tour.image}`}
                 alt={tour.title}
               />
@@ -104,8 +103,10 @@ export default function BestOffers() {
                 index === 0 ? "sm:w-2/3" : "sm:w-1/3"
               } relative group overflow-hidden rounded-lg cursor-pointer`}
             >
-              <img
+              <Image
                 className="h-64 sm:h-96 w-full object-cover rounded-lg group-hover:scale-105 transition-all duration-300"
+                width={1200}
+                height={350}
                 src={`/tours/${tour.image}`}
                 alt={tour.title}
               />

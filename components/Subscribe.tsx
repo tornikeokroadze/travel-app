@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 
 export default function Subscribe() {
@@ -51,8 +52,10 @@ export default function Subscribe() {
   return (
     <div className="relative flex flex-col lg:flex-row lg:items-center lg:justify-center mt-20 py-16 px-12 lg:px-2 bg-primary-100 overflow-hidden">
       <div className="absolute inset-0">
-        <img
+        <Image
           src="/book-now-shape.png"
+          width={1200}
+          height={1200}
           className="w-full h-full object-cover opacity-5"
           alt="Background Shape"
         />

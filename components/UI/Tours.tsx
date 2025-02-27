@@ -23,7 +23,7 @@ export default function Tours({
 }: {
   tours: any[];
   haveBorder?: boolean;
-  hrefTo: String;
+  hrefTo: string;
   slidesToShow: number;
 }) {
   const [likedState, setLikedState] = useState<{ [key: string]: boolean }>({});
