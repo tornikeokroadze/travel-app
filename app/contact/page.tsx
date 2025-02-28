@@ -169,7 +169,7 @@ export default function Page() {
 
           <div className="flex flex-wrap justify-center mt-12 gap-4">
             {contactInfo.phone && (
-              <div className="flex items-center border rounded-lg shadow-md w-full lg:w-auto py-10 px-16 group">
+              <div className="flex items-center justify-center border rounded-lg shadow-md w-full lg:w-auto py-10 px-16 group">
                 <a
                   href={`tel:${contactInfo.phone}`}
                   className="flex items-center gap-2"
@@ -188,7 +188,7 @@ export default function Page() {
             )}
 
             {contactInfo.location && (
-              <div className="flex items-center border rounded-lg shadow-md w-full lg:w-auto py-10 px-16 group">
+              <div className="flex items-center justify-center border rounded-lg shadow-md w-full lg:w-auto py-10 px-16 group">
                 <a
                   href={`https://www.google.com/maps?q=${contactInfo.location}`}
                   target="_blank"
@@ -208,7 +208,7 @@ export default function Page() {
             )}
 
             {contactInfo.email && (
-              <div className="flex items-center border rounded-lg shadow-md w-full lg:w-auto py-10 px-16 group">
+              <div className="flex items-center justify-center border rounded-lg shadow-md w-full lg:w-auto py-10 px-16 group">
                 <a
                   href={`mailto:${contactInfo.email}`}
                   className="flex items-center gap-2"

@@ -39,7 +39,7 @@ export default function FindTrip() {
       >
         <div className="grid grid-cols-2 lg:flex shadow-lg rounded-t-lg lg:rounded-l-lg lg:rounded-tr-none overflow-hidden bg-white">
           {/* Direction Selection */}
-          <div className="flex flex-col w-full lg:w-48 h-24 border-b sm:border-b-0 lg:border-r border-gray-300 px-6 justify-center">
+          <div className="flex flex-col w-full lg:w-48 h-24 border-b lg:border-b-0 border-r border-gray-300 px-6 justify-center">
             <span className="text-sm text-gray-500 mb-2">Location</span>
             <select
               className="bg-white text-lg outline-none"
@@ -56,7 +56,7 @@ export default function FindTrip() {
           </div>
 
           {/* Type Selection */}
-          <div className="flex flex-col w-full lg:w-48 h-24 border-b sm:border-b-0 lg:border-r border-gray-300 px-6 justify-center">
+          <div className="flex flex-col w-full lg:w-48 h-24 border-b lg:border-b-0 lg:border-r border-gray-300 px-6 justify-center">
             <span className="text-sm text-gray-500 mb-2">Type</span>
             <select
               className="bg-white text-lg outline-none"
@@ -73,7 +73,7 @@ export default function FindTrip() {
           </div>
 
           {/* Start Date */}
-          <div className="flex flex-col w-full lg:w-48 h-24 border-b sm:border-b-0 lg:border-r border-gray-300 px-6 justify-center">
+          <div className="flex flex-col w-full lg:w-48 h-24 border-r border-gray-300 px-6 justify-center">
             <span className="text-sm text-gray-500 mb-2">Start Date</span>
             <input
               type="date"
@@ -97,7 +97,7 @@ export default function FindTrip() {
 
         <button
           type="submit"
-          className="relative w-full lg:w-48 min-h-12 lg:min-h-24 px-6 bg-primary-100 font-semibold text-white overflow-hidden rounded-b-lg lg:rounded-r-lg lg:rounded-bl-none group"
+          className="relative w-full lg:w-48 min-h-16 lg:min-h-24 px-6 bg-primary-100 font-semibold text-white overflow-hidden rounded-b-lg lg:rounded-r-lg lg:rounded-bl-none group"
         >
           <span className="absolute inset-0 bg-secondary transform scale-y-0 group-hover:scale-y-100 origin-bottom transition-all duration-1000"></span>
           <span className="relative transition-colors duration-100">

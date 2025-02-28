@@ -8,12 +8,12 @@ export default function OneDayTours() {
   const { data: tours } = useFetchData("tours?duration=1&limit=6");
 
   return (
-    <div className="px-4 mt-20">
+    <div className="px-4 mt-20 w-full">
       <h2 className="text-2xl sm:text-4xl font-semibold text-center">
         ONE DAY TOURS
       </h2>
 
-      <div className="my-12 sm:mb-6">
+      <div className="my-12 px-3 sm:px-4 sm:mb-6 w-full">
         <Tours
           haveBorder={true}
           tours={tours}
@@ -22,7 +22,7 @@ export default function OneDayTours() {
         />
       </div>
 
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center w-full">
         <AllButton hrefTo="one-day-tours" />
       </div>
     </div>

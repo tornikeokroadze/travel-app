@@ -159,7 +159,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <p className="text-xs sm:text-sm text-white font-semibold mt-4 sm:mt-0 pr-10 2xl:mr-72">
+            <p className="text-xs sm:text-sm text-white font-semibold mt-4 sm:mt-0 pr-2 sm:pr-10 2xl:mr-72">
               Copyright © 2025 | Created By Tornike.
             </p>
           </div>
