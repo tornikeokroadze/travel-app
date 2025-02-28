@@ -7,23 +7,12 @@ import Book from "@/components/Book";
 import { useFetchData } from "@/utils/fetchData";
 import ToursCard from "@/components/UI/ToursCard";
 import AllButton from "@/components/UI/AllButton";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { IoHeart } from "react-icons/io5";
 import Image from "next/image";
 
-const stripePublishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
-
-if (!stripePublishableKey) {
-  throw new Error(
-    "Stripe publishable key is not defined in the environment variables."
-  );
-}
-
-const stripePromise = loadStripe(stripePublishableKey);
 
 export default function TourDetail() {
   const params = useParams();
@@ -138,9 +127,7 @@ export default function TourDetail() {
         </div>
 
         <div className="flex-grow">
-          <Elements stripe={stripePromise}>
             <Book tourId={tour.id} tourPrice={tour.price} />
-          </Elements>
         </div>
       </div>
       <p className="text-md text-primary-100 font-semibold mt-8">

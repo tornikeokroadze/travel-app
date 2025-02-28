@@ -16,8 +16,11 @@ export async function POST(request: Request) {
     }
 
     if (firstName) {
+      const sanitizedFirstName = validator.escape(validator.trim(firstName));
+      const sanitizedComment = validator.escape(validator.trim(comment));
+
       // Validate required fields
-      if (!firstName || !comment) {
+      if (!sanitizedFirstName || !sanitizedComment) {
         return NextResponse.json(
           { error: "Missing required fields." },
           { status: 400 }
@@ -26,13 +29,13 @@ export async function POST(request: Request) {
 
       const contactLid = await prisma.contactLid.create({
         data: {
-          name: firstName,
+          name: sanitizedFirstName,
           email,
-          comment,
+          comment: sanitizedComment,
           subscribe: false,
         },
       });
-      return NextResponse.json(contactLid)
+      return NextResponse.json(contactLid);
     }
 
     // Check if the email already exists for subscribe

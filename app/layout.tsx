@@ -6,7 +6,6 @@ import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Footer from "@/components/Footer";
 import Subscribe from "@/components/Subscribe";
-import IntercomChat from "@/components/IntercomChat";
 import CookieConsent from "@/components/CookieConsent";
 
 const geistSans = Geist({
@@ -39,7 +38,6 @@ export default function RootLayout({
           <Hero />
           <main className="flex-1">
             {children}
-            <IntercomChat />
             <CookieConsent />
           </main>
           <Subscribe />

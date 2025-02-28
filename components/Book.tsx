@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface BookProps {
   tourId: string;
@@ -16,74 +16,6 @@ export default function Book({ tourId, tourPrice }: BookProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    setIsProcessing(true);
-    setErrorMessage(null);
-
-    try {
-      const response = await fetch("/api/payment", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          tourPrice,
-          tourId,
-          firstName,
-          lastName,
-          email,
-          phone,
-          peopleNum,
-        }),
-      });
-      const data = await response.json();
-
-      if (!response.ok) {
-        setErrorMessage(data.error || "An unexpected error occurred.");
-        return;
-      }
-
-      const { id } = data;
-
-      const stripe = getStripe();
-      if (!stripe) {
-        setErrorMessage("Stripe failed to load. Please try again later.");
-        return;
-      }
-
-      const { error } = await stripe.redirectToCheckout({ sessionId: id });
-
-      if (error) {
-        setErrorMessage(
-          error.message || "An unexpected error occurred during checkout."
-        );
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        setErrorMessage(error.message);
-      } else {
-        setErrorMessage("Payment failed. Please try again.");
-      }
-    } finally {
-      setIsProcessing(false);
-    }
-  };
-
-  useEffect(() => {
-    if (errorMessage) {
-      const timer = setTimeout(() => {
-        setErrorMessage("");
-      }, 3000);
-
-      return () => clearTimeout(timer);
-    }
-  }, [errorMessage]);
-
-  const getStripe = () => {
-    if (typeof window === "undefined" || !window.Stripe) {
-      return null;
-    }
-    return window.Stripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
   };
 
   return (
